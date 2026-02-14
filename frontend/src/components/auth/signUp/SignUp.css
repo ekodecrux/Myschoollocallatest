@@ -1,0 +1,176 @@
+.signUpLeftContainer,
+.signUpRightContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.signUpInputContainer {
+    display: flex;
+    column-gap: 20px;
+    row-gap: 24px;
+    flex: 1;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+    /* height:80vh;
+    overflow: scroll; */
+}
+
+.roleSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 20px;
+    min-height: 56px;
+    background-color: #DDD9C3;
+    overflow-x: auto;
+}
+
+.registerForm {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    padding: 5% 4% 5%
+}
+
+.registerParentCard {
+    max-height: 80vh;
+    overflow: hidden !important;
+}
+
+.signupNav {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 18px;
+    border-bottom: 1px solid #DDDDDD;
+    position: relative;
+    background-color: white;
+    z-index: 2;
+}
+
+.SignUpHeading {
+    padding-top: 25px;
+    text-align: center;
+    user-select: none;
+}
+
+
+@media screen and (min-width:320px) and (max-width: 520px) {
+    .signUpInputContainer {
+        flex-direction: column;
+    }
+
+    .registerParentCard {
+        max-height: 90vh;
+        /* overflow: scroll !important; */
+        flex-direction: column;
+        min-width: 100vw;
+        align-items: center;
+    }
+
+    .registerForm {
+        padding: 25px 30px 54px;
+        /* max-height: 50vh; */
+        overflow-y: scroll;
+    }
+
+    .roleSelector {
+        padding: 0px 0px;
+        max-width: 100vw;
+    }
+
+    .registerContBtn {
+        padding: 0px 0px;
+    }
+
+    .signupNav {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        justify-content: center;
+        align-items: center;
+        padding-top: 18px;
+        border-bottom: 1px solid #DDDDDD;
+        position: fixed;
+        background-color: white;
+        z-index: 2;
+        min-width: 100vw;
+
+    }
+
+    .SignUpHeading>h3 {
+        /* padding-top: 35px; */
+        font-size: 23px;
+        /* padding-top: 10px; */
+        user-select: none;
+    }
+
+    .signUpCloseModal {
+        position: absolute;
+        top: 10%;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        justify-content: center;
+        min-width: 50px !important;
+        min-height: 50px !important;
+        background-color: white !important;
+        border-radius: 30px !important;
+
+    }
+
+    .SignUpHeading {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 100vw;
+        padding-top: 60px;
+    }
+
+    .registerForm::-webkit-scrollbar {
+        display: none;
+    }
+
+}
+
+@media screen and (min-width:320px) and (max-width: 520px) {
+    .registerForm {
+        /* padding: 8%; */
+    }
+}
+
+/* Fix for Cancel/Sign Up button styling - each button handles its own hover */
+.registerContBtn {
+    display: flex;
+    gap: 16px;
+    margin-top: 10px;
+}
+
+/* Prevent any container-level hover effects */
+.registerContBtn:hover {
+    background-color: transparent !important;
+}
+
+/* @media screen and  (max-width:425px) {
+    .signUpCloseModal{
+      top:66px !important;
+    }
+  
+  }
+  @media screen and  (max-width:320px){
+    .signUpCloseModal{
+     top:110px !important;
+    }
+  
+  }
+  @media screen and (max-width: 375px){
+    .signUpCloseModal{
+      top:50px !important;
+    }
+  
+  } */

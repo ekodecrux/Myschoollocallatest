@@ -1,0 +1,47 @@
+.mmItemContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+}
+
+.mmItemContainerList {
+    gap: 15px;
+    column-gap: 120px !important;
+    display: grid;
+    grid-template-rows: auto auto auto auto;
+    grid-auto-flow: column;
+    grid-auto-columns: max-content;
+}
+
+.mmItemContainerLink {
+    color: white;
+    font-size: 16px !important;
+     font-family:  futura md bt !important; 
+    font-weight: 300 !important;
+    text-transform: capitalize !important;
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+}
+
+.cursorPointer {
+    cursor: pointer;
+}
+
+.yellowBackground {
+    /* background-color: yellow; */
+    border-radius: 10px;
+    /* justify-content: center; */
+    display: flex;
+    /* padding: 0px 13px; */
+}
+
+.yellowBackground > p {
+    /* color: black; */
+    color:white;
+}
+
+.itemsHeading:hover {
+    color:white;
+}

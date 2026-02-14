@@ -1,0 +1,188 @@
+.subscriptionpageMainContainer {
+    flex: 1;
+    display: flex;
+    /* gap: 20px; */
+    margin: 94px 0px 24px;
+    background-color: #F7F7F7;
+}
+
+.subscriptionTxtContainer {
+    display: flex;
+    flex: 0.5;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 15px;
+}
+
+.subscriptionImageConatiner {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 17px;
+    flex: 1;
+    /* padding-left:30px; */
+}
+
+.monthalySubscriptionCard {
+    flex: 1;
+    /* max-height: 254px;    */
+    min-width: 260px;
+    border-radius: 16px !important;
+    border: 1px solid #5FCBF3;
+    background-color: #F8FDFF !important;
+    padding: 20px;
+}
+
+.annualSubscriptionCard {
+    flex: 1;
+    /* max-height: 254px; */
+    min-width: 260px;
+    border-radius: 16px !important;
+    border: 1px solid #98D74B;
+    background-color: #FBFFF6 !important;
+    padding: 20px;
+}
+
+.biannualSubscription {
+    flex: 1;
+    /* max-height: 254px; */
+    min-width: 260px;
+    border-radius: 16px !important;
+    border: 1px solid #F1564A;
+    background-color: #FFF8F8 !important;
+    padding: 20px;
+}
+
+.renderCardMainContainer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.renderCard {
+    min-width: 320px;
+    flex: 1;
+    max-height: 80px;
+    display: flex;
+    flex-direction: row;
+}
+
+.cardImages {
+    max-width: 150px;
+    max-height: 120px;
+    float: right;
+    padding-top: 20px;
+}
+
+.textContainer {
+    color: #000000;
+}
+
+.starImage {
+    max-width: 18px;
+    max-height: 18px;
+}
+
+.recommendedButton {
+    border-radius: 11px 0px 0px 11px;
+    color: white;
+    background-color: #83CC2A;
+    border: none;
+    margin-right: -20px;
+}
+
+.annualSubscriptionBtnTypoContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 41px;
+}
+
+.subscriptionBtnImgContainer {
+    
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap-reverse;
+    gap: 20px;
+
+}
+.tableContainer{
+     
+     display:flex; 
+    height: 164px;
+     /* padding-left: 2%; */
+     /* flex:1; */
+} 
+
+@media screen and(min-width:320px) and (max-width: 520px) {
+     .subscriptionImageConatiner {
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+        padding: 20px;
+
+        padding: 20px;
+    } 
+
+    .textContainer {
+
+        font-size: 16px;
+        color: black;
+        padding: 20px;
+    }
+
+     .subscriptionTxtContainer{
+        /* gap:0px; */
+        padding: 0px 20px;
+    } 
+     .subscriptionTxtContainer>img {
+        width: 30px;
+        height: 30px;
+    } 
+    .subscriptionpageMainContainer {
+        gap: 0px;
+        margin: 0px 0px 24px;
+   
+      
+    }
+    
+
+    .renderCard{
+    /* min-width: 470px; */
+    max-height: 80px;
+    display: flex;
+    flex-direction: row;
+    }
+   
+    
+    .renderCardMainContainer{
+        align-items:center;
+        justify-content: center;
+        padding: 20px;
+    }
+    
+    .annualSubscriptionCard{
+        max-width: 342;
+        /* max-height: 235px; */
+    }
+    .biannualSubscription{
+        max-width: 342;
+        /* max-height: 250px; */
+    }
+    .monthalySubscriptionCard{
+        max-width: 342;
+        /* max-height: 250px; */
+    }
+    .annualSubscriptionBtnTypoContainer{
+        gap:110px;
+    }
+    .recommendedButton{
+        padding-left: 10px;
+    }
+    .tableContainer {
+        padding: 0px 20px;
+    }
+}

@@ -1,0 +1,295 @@
+.mainContainer {
+    display: flex;
+    flex: 1;
+    align-self: center;
+}
+
+.imageWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+}
+
+.imagesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+}
+
+.drawerImage{
+  display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+}
+.grid-col4 {
+    grid-template-columns: auto auto auto auto !important;
+}
+
+.imageResize {
+    flex: 0.6;
+    max-width: 35vw;
+    z-index: 1;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0px 20px
+}
+
+.imageResizePosition {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 80vh;
+    background-color: #3A3838;
+}
+
+.actionContainer {
+    display: flex;
+    flex: 0.3;
+    align-items: flex-end;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .actionButtons {
+    background-color: white;
+    border-radius:  19px;
+    padding: 0px 16px;
+    border: 1px solid #DDDDDD;
+    display: flex;
+}
+
+.bottomContainer {
+    display: flex;
+    align-items: center;
+    flex: 0.3;
+    align-items: flex-start;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.bottomContainer > p {
+    color: white;
+    font-family: 'Proxima Nova';
+    font-weight: 400;
+    font-size: 16px;
+}
+
+.bottomContainerButton {
+  padding: 8px 15px !important;
+  color: #FFFFFF !important;
+  background-color: #494949 !important;
+}
+.imageSearchbarPagignationContainer{
+    display:flex;
+    flex-direction: row;
+    align-items:center;
+    justify-content: flex-end;
+    padding: 50px 0px;
+}
+
+.imageRendererWidth {
+    width: auto;
+    max-height: 200px;
+    height: 200px;
+    /* background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/HD_transparent_picture.png/800px-HD_transparent_picture.png'); */
+}
+
+.imagesSubContainer {
+    display: flex;
+    flex-direction: column;
+    /* max-width: 144px; */
+}
+
+.navigationButtons {
+  display: flex;
+  background-color: white;
+    border-radius: 19px;
+    padding: 0px 16px;
+    border: 1px solid #DDDDDD;
+}
+
+@media only screen and (max-width : 1368px ) {
+    .imageRendererWidth {
+        /* max-width: 155px; */
+        max-width: 50vw;
+    }
+}
+
+/* img {
+    pointer-events: none;
+} */
+
+.pdfRender .react-pdf__Page__canvas {
+  height: 200px !important;
+}
+
+.react-pdf__Page {
+  display: flex;
+  flex: 1;
+}
+
+.react-pdf__Page__canvas {
+    width: 100% !important;
+    height: 100% !important;
+  }
+  
+  .react-pdf__Document {
+    position: relative;
+    display: flex;
+    flex: 0.4;
+  }
+  .react-pdf__Document:hover .page-controls {
+    opacity: 1;
+  }
+  .page-controls {
+    position: absolute;
+    bottom: -6%;
+    left: 50%;
+    color: black;
+    background: white;
+    border-radius: 5px;
+    opacity: 1;
+    transform: translateX(-50%);
+    transition: opacity ease-in-out 0.2s;
+  }
+  .page-controls span {
+    font: inherit;
+    font-size: .8em;
+    padding: 0 .5em;
+  }
+  .page-controls button {
+    width: 36px;
+    height: 60px;
+    background: white;
+    border: 0;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 38px;
+  }
+  .page-controls button:enabled:hover {
+    cursor: pointer;
+  }
+  .page-controls button:enabled:hover, .page-controls button:enabled:focus {
+    background-color: #e6e6e6;
+  }
+  .page-controls button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .page-controls button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+
+  @media screen and (min-width: 320px) and (max-width:520px) {
+  .mobileActionContainer {
+    display: flex;
+    padding-top: 10px;
+    flex: 0.3 1;
+    align-items: center;
+    width: 100%;
+    justify-content: center;
+  }
+  .mobileActionButtons {
+      background-color: white;
+      border-radius:  19px;
+      /* padding: 0px 16px; */
+      border: 1px solid #DDDDDD;
+      display: flex;
+  }
+  .imageSearchbarPagignationContainer {
+    justify-content: center;
+    padding: 50px 0px;
+  }
+  .imagesSubContainer {
+    max-width: 40%;
+  }
+  .imagesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    /* row-gap: 30px; */
+    /* column-gap: unset; */
+  }
+  .imageResizePosition {
+    margin-bottom: 0px;
+    max-height: 128vh;
+  }
+  .imageRendererWidth {
+    /* max-width: 50vw; */
+    height: unset;
+    max-height: unset;
+  }
+}
+@media screen  and (max-width:1280px) and (min-width:541px){
+   .imageResizePosition{
+    height: 68vh;
+  
+  } 
+  .imageResize{
+    max-width: 17vw;
+  }
+  .academicImage{
+    width:40%;
+  }
+  .actionButtons{
+    /* padding: 1px; */
+    /* padding-top: 5%; */
+  }
+  .bottomContainer > p{
+    font-size: 2.2vh;
+  }
+  .bottomContainerButton{
+    font-size: 1vw !important;
+  }
+
+}
+
+@media screen and (min-width: 320px) and (max-width:520px) {
+  .imageResize {
+    max-width: unset !important;
+    height: calc(100vh - 104px);
+  }
+  .imageResizePosition {
+    right: 0 !important;
+  }
+  .academicImage {
+    width: 80vw !important;
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1420px) {
+  .academicImage {
+    width: 70% !important;
+  }
+}
+
+@media screen and (min-width: 720px) and (max-width: 1280px){
+  .transformComponent{
+    width:auto; 
+  height: 410px; }
+   .bottomContainer{
+    width:85%;
+   }
+   .page-controls button {
+    width: 35px;
+    height: 0px;
+    background: white;
+    border: 0;
+    border-radius: 10px;
+    font: inherit;
+    font-size: 33px;
+  }
+   .page-controls{
+    height: 9%;
+  }
+  /*.page-controls span {
+    font: inherit;
+    font-size: 1.8em;
+    padding: 0 .5em;
+  } */
+}

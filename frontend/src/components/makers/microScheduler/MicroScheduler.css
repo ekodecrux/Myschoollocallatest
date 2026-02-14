@@ -1,0 +1,18 @@
+.micro-scheduler-container {
+  font-family: 'Roboto', sans-serif;
+}
+
+@media print {
+  .micro-scheduler-container .MuiPaper-root:first-child {
+    display: none !important;
+  }
+  
+  .micro-scheduler-container .MuiToolbar-root {
+    display: none !important;
+  }
+  
+  /* Hide navigation buttons and Copy to Next Week in print */
+  .hide-on-export {
+    display: none !important;
+  }
+}

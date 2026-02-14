@@ -1,0 +1,153 @@
+.adsMainContainer {
+    display: flex;
+    min-height: 300px;
+    flex: 1;
+    background-color: white;
+    position: relative;
+    z-index: 1;
+}
+
+.adsAiWrapper {
+    flex: 0.5 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.adsImagesContainer {
+    flex: 0.7;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.adsSectionDivider {
+    width: 4px;
+    background-color: #EBEBEB
+}
+
+.mySwiper {
+    /* display: flex; */
+    flex: 1;
+}
+
+.mySwiper > div:nth-child(1) {
+    /* display: flex; */
+    height: 400px;
+}
+
+.mySwiper > div > div > div > div, .mySwiper > div > div > div > div > div, .mySwiper > div > div > div > div > div >div {
+    display: flex;
+    flex: 1;
+}
+
+.slide1 {
+    background-image: url('../../assests/ads/banner\ slide\ page-1.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide2 {
+    background-image: url('../../assests/ads/banner\ slide\ page-2.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide3 {
+    background-image: url('../../assests/ads/banner\ slide\ page-3.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide4 {
+    background-image: url('../../assests/ads/banner\ slide\ page-4.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide5 {
+    background-image: url('../../assests/ads/banner\ slide\ page-5.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide6 {
+    background-image: url('../../assests/ads/banner\ slide\ page-6.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide7 {
+    background-image: url('../../assests/ads/banner\ slide\ page-7.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide8 {
+    background-image: url('../../assests/ads/banner\ slide\ page-8.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide9 {
+    background-image: url('../../assests/ads/banner\ slide\ page-9.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.slide10 {
+    background-image: url('../../assests/ads/banner\ slide\ page-10.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+@media  screen and (width : 1368px) {
+    .adsAiWrapper {
+        flex: 0.5;
+    }
+}
+
+@media screen and (width : 1920px) {
+    .slide6 {
+        /* background-image: url('../../assests/ads/Slide7.jpg'); */
+    }
+    
+}
+
+@media screen and (min-width: 370px) and (max-width: 540px) {
+    .adsMainContainer {
+        font-display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }    
+    .mySwiper > div:nth-child(1) {
+        /* display: flex; */
+        height: 150px;
+    }
+    
+    .mySwiper > div > div > div > div, .mySwiper > div > div > div > div > div, .mySwiper > div > div > div > div > div >div {
+        display: flex;
+        flex: 1;
+    }
+    .slide1, .slide2, .slide3, .slide4, .slide5, .slide6, .slide7, .slide8, .slide9, .slide10 {
+        background-size: cover;
+    }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1420px) {
+    .mySwiper > div:nth-child(1) {
+        /* display: flex; */
+        height: 300px;
+    }
+}

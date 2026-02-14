@@ -1,0 +1,113 @@
+.megaMenuContainer {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(238, 236, 224);
+    justify-content: space-between;
+    min-height: 305px;
+    max-height: 310px;
+    /* margin-top: 181px !important; */
+    margin-top: 192 px !important;
+}
+
+.megaMenuWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: transparent linear-gradient(180deg, #6B90DB 0%, #77A0F2 10%, #7DA8FF 100%) 0% 0% no-repeat padding-box !important;
+    border-radius: 0px 0px 24px 24px;
+  
+}
+
+.megaMenuItems {
+    display: flex;
+    padding-top: 32px;
+    flex: 1;
+}
+
+.megaMenuBtnContainer {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    flex: 0.2;
+
+}
+
+.firstSubContainer {
+    display: flex;
+    /* flex: 50%; */
+}
+
+.secondSubContainer {
+    display: flex;
+    /* flex: 50%; */
+    /* border-left: dashed;
+    border-color: white; */
+}
+
+.thirdSubContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.list2 {
+    /* padding-left: 20px; */
+}
+
+.megaMenuBackGroundColor {
+    background-image: linear-gradient(180deg, #C9DBFF 0%, #7DA8FF 100%);
+    font-family: 'Proxima Nova';
+    font-size: 16px;
+    text-transform: uppercase;
+    font-weight: 400;
+    padding: 8px 20px !important;
+}
+
+.subMenuScrollWrapper {
+    /* margin-top: 60px; */
+}
+
+.subMenuSeparator {
+    min-width: 30px
+}
+
+@media screen and (min-width: 320px) and (max-width: 520px) {
+    .megaMenuContainer {
+        display: flex;
+        background: transparent !important;
+        flex-direction: row;
+        border-radius: 0px 0px 24px 24px;
+        justify-content: space-between;
+        margin-bottom: 2px;
+        min-height: unset;
+        max-height: unset;
+        margin-top: unset !important;
+    }
+
+    .mobileMenubarItems {
+
+        padding: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .megaMenuItems {
+        flex-direction: column;
+        padding: 0px !important;
+    }
+
+    .mmItemContainerList {
+        grid-template-rows : unset !important;
+        grid-auto-flow : unset !important;
+        display: contents !important;
+    }
+
+    .mmItemContainer {
+        margin-top: 18px;
+    }
+
+    .megaMenuWrapper {
+        background: none !important;
+    }
+}

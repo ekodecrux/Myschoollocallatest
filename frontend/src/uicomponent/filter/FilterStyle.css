@@ -1,0 +1,302 @@
+.dropDownContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    /* gap: 30px; */
+    /* border:2px solid; */
+    flex-wrap: wrap;
+    align-items: flex-start;
+    flex: 0.5;
+
+}
+
+.imgbtn {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 60px;
+    background-color: white;
+    text-align: center;
+    font-size: 15px;
+    /* border-color: blue;
+    color: black; */
+    align-items: center;
+    height: 30px;
+}
+
+.pdfbtn {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 80px;
+    background-color: white;
+    text-align: center;
+    font-size: 15px;
+    /* border-color: blue;
+    color: black; */
+    align-items: center;
+    height: 30px;
+}
+
+.anibtn {
+    display: flex;
+    margin-top: 20px;
+    border-radius: 20px;
+    width: 80px;
+    background-color: white;
+    text-align: center;
+    font-size: 15px;
+    border-color: blue;
+    color: black;
+    align-items: center;
+    height: 30px;
+}
+
+.imgType {
+    height: 20px;
+    color: aqua;
+    padding: 12.5px 14px;
+
+
+}
+
+.filterContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    /* height: 70px; */
+    align-self: center;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    width: 100% ;
+    /* border:2px solid; */
+
+}
+
+.structureFilterContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    /* height: 70px; */
+    align-self: center;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    width: 100% ;
+    /* border:2px solid; */
+}
+
+.btnContainer {
+    display: flex;
+    flex-direction: row;
+    /* margin-right: 28%; */
+    justify-content: space-evenly;
+    row-gap: 10px;
+}
+
+.arrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.closeArrow {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 22px;
+}
+
+.cardContainer {
+
+    width: 100px;
+    height: 30px;
+    border-radius: 40px;
+    background-color: gray;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    margin-left: 10px;
+
+
+}
+
+.scrollContainer {
+    /* margin-right: 26%; */
+    overflow: hidden;
+    overflow-x: hidden;
+    flex: 0.4;
+}
+
+
+.muiIcons {
+    display: flex;
+    flex-direction: row;
+    row-gap: 20px;
+    justify-content: flex-end;
+    align-items: center;
+    border: 2px solid;
+    height: 40px;
+    border-radius: 20px;
+    margin-top: 13px;
+}
+
+
+/* Clean Css */
+
+.filterSelect {
+    border-radius: 19px !important;
+    background-color: white;
+}
+
+.filterSelectLabel {
+    font-family: 'Nunito Sans' !important;
+    font-weight: 600 !important; 
+    font-size: 18px !important;
+    color: #3C4043 !important
+}
+
+.filterCards {
+    display: flex;
+    padding : 4px 36px;
+    align-items: center ;
+    background-color: white;
+    border-radius: 25px;
+    height: 30px;
+    border: 1px solid #DDDDDD;
+}
+
+.react-horizontal-scrolling-menu--inner-wrapper {
+    align-items: center;
+}
+
+.react-horizontal-scrolling-menu--scroll-container {
+    gap: 5px;
+    /* gap: 16px; */
+}
+
+
+
+.filterSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* padding: 0px 100px; */
+    height: 56px;
+    /* background-color: #DDD9C3; */
+    width: 33vw;
+}
+
+.filterItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4px 12px;
+    border: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    border-radius: 19px;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.filterItemActive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4px 12px;
+    border: 2px solid #50D299;
+    background-color: #FFFFFF;
+    border-radius: 19px;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.structureFilterItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 16px;
+    border: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.structureFilterItemActive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 16px;
+    border: 2px solid #50D299;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.filterParagraph {
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+}
+
+@media screen and (min-width: 320px) and (max-width:520px) {
+    .actionButtons {
+        /* display: none; */
+    } 
+    .scrollContainer {
+        display: none;
+    }   
+    .filterContainer {
+        flex-direction: column;
+    }
+    .filterSelector{
+        width:90vw;
+    }
+}
+.filterItemAll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 4px 12px;
+    border: 2px solid #7FAAFF;
+    background-color: #7FAAFF;
+    color: #FFFFFF;
+    border-radius: 19px;
+    opacity: 1;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.filterItemAll:hover {
+    background-color: #5A8FE8;
+    border-color: #5A8FE8;
+}

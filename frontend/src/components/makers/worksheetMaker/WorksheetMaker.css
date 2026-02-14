@@ -1,0 +1,12 @@
+.worksheet-maker {
+  font-family: 'Roboto', sans-serif;
+}
+
+@media print {
+  .worksheet-maker .MuiPaper-root:first-child {
+    display: none !important;
+  }
+  .worksheet-maker .MuiToolbar-root {
+    display: none !important;
+  }
+}

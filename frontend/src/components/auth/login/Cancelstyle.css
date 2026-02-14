@@ -1,0 +1,24 @@
+.loginSignupCancelModal{
+    border:2px solid #B3DAFF;
+    border:20px;
+     opacity:1; 
+    height:48px;
+    width:48px;
+    bottom: 220px;
+    border-radius: 50px;
+    
+
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 540px) {
+    .loginSignupCancelModal
+    {
+bottom: 423px;
+    border-radius: 50px;
+    display: flex;
+    flex-direction: row-reverse;
+    right: 199px;
+    position: fixed;
+    }
+}

@@ -1,0 +1,198 @@
+.headerContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white !important;
+  z-index: 1100 !important;
+}
+
+.headerWrapper {
+  display: flex;
+  flex: 1;
+}
+
+.headerViewNavContainer {
+  display: flex;
+  max-height: 70px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex: 1;
+ margin: 5px 0px;
+}
+.headerImage{
+  width: 42px;
+}
+.headerHomeLogo{
+  width:33.55px;
+  margin:8px;
+  margin-top:13px;
+}
+
+
+.headerNavWrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 0;
+  align-items: flex-start;
+}
+
+.headerLogoContainer {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+}
+
+.navWrapper {
+  flex: 1;
+  display: flex;
+  /* flex-direction: column;
+  align-items: center; */
+  gap: 17px;
+  /* gap: 0px; */
+  align-items: flex-start;
+}
+
+.justifyContent {
+  justify-content: flex-end;
+}
+
+.headerLogo {
+  max-width: 172px;
+}
+
+.headerViewsNavLink {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  column-gap: 3.67px;
+  font-size: smaller;
+  min-width: 81px;
+
+}
+
+.headerViewsNavLinkActive {
+  font-weight: 700;
+}
+
+.headerBreadCrumbContainer {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.headerBreadcrumbs {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerBreadcrumbs .MuiBreadcrumbs-ol {
+  flex-wrap: nowrap !important;
+}
+
+.headerBreadcrumbs .MuiBreadcrumbs-li {
+  max-width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.headerTextContainer p {
+  font-size: 26px !important;
+  font-weight: bold !important;
+  color: #00a0e3 !important;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  /* padding-bottom: 8%;  */
+  /* padding-right: 10%; */
+  /* font-family: Courier New, Courier, monospace; */
+
+}
+
+.headerViewsNavLinkHidden {
+  display: flex;
+}
+.headerHomeGutter{
+  flex: 0.2;
+  max-width: 120px;
+  min-width: 130px;
+  justify-content: flex-end;
+  align-items: flex-start;
+  display:flex;
+}
+
+@media screen and (min-width: 320px) and (max-width:520px) {
+  .justifyContent {
+    display: none;
+  }
+  .navWrapper{
+    padding-left: 5%;
+  }
+
+  .headerViewNavContainer {
+    /* padding-left: 16px;  */
+  }
+
+  .headerBreadcrumbs {
+    /* display: none; */
+    color:white !important;
+    /* padding: 7px; */
+    /* padding-left: 15px; */
+  }
+
+  .headerTextContainer>p {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 1280px) and (max-width: 1420px) {
+ 
+   
+  .headerBreadCrumb {
+    padding-left: 150px !important;
+  }
+  /* .headerWrapper {
+    min-height: 100px;
+  } */
+  .headerViewNavContainer {
+    max-height: 92px !important;
+  }
+  .headerMySchoolLogo {
+    max-width: 380px !important;
+  }
+  .navWrapper{
+    gap:5px  !important;
+  }
+
+  .headerImage{
+    width: 38px ! important;
+  }
+
+  .headerHomeLogo{
+    margin-top:16px;
+    width:30.55px;
+  }
+}
+@media screen and (min-width: 720px) and (max-width:1280px){
+  .headerMySchoolLogo{
+    max-width: 70% !important;
+    max-height: 53px;
+    padding-left: 10px !important;
+  }
+  .headerBreadCrumb{
+    /* padding-left: 24%  !important; */
+  }
+  .navWrapper{
+    gap:0px  !important;
+    padding-left: 10px;
+  }
+  .headerImage{
+
+      width: 34px ! important;
+  }
+    .headerHomeLogo{
+      margin-top:16px;
+      width:28.55px;
+    }
+
+}

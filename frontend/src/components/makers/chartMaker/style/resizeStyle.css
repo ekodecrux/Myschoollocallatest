@@ -1,0 +1,10 @@
+.chartMakerResizeBtn > span {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+
+.chartMakerResizeBtn {
+    background-color: transparent !important;
+    box-shadow: none !important;
+}

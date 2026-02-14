@@ -1,0 +1,158 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+
+ body {
+  margin: 0;
+  font-family: 'Nunito Sans', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  width: 100%;
+  min-height: 100vh;
+} 
+
+ code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+} 
+
+html body {
+  min-height: 100vh;
+}
+
+#root {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ===== Global Responsive Utilities ===== */
+.mobile-only {
+  display: none;
+}
+.desktop-only {
+  display: block;
+}
+
+@media screen and (max-width: 768px) {
+  .mobile-only {
+    display: block;
+  }
+  .desktop-only {
+    display: none;
+  }
+  
+  /* Mobile-friendly containers */
+  .mobile-container {
+    padding: 8px !important;
+  }
+  
+  /* Mobile-friendly buttons */
+  .MuiButton-root {
+    min-height: 44px;
+  }
+  
+  /* Mobile-friendly inputs */
+  .MuiTextField-root {
+    width: 100%;
+  }
+  
+  /* Mobile-friendly cards */
+  .MuiCard-root {
+    margin: 4px 0;
+  }
+  
+  /* Mobile-friendly tables */
+  .MuiTableCell-root {
+    padding: 8px 4px !important;
+    font-size: 0.85rem !important;
+  }
+  
+  /* Mobile-friendly dialogs */
+  .MuiDialog-paper {
+    margin: 16px !important;
+    width: calc(100% - 32px) !important;
+    max-width: 100% !important;
+  }
+  
+  /* Mobile-friendly tabs */
+  .MuiTab-root {
+    min-width: auto !important;
+    padding: 8px 12px !important;
+    font-size: 0.75rem !important;
+  }
+  
+  /* Mobile typography */
+  .MuiTypography-h4 {
+    font-size: 1.5rem !important;
+  }
+  .MuiTypography-h5 {
+    font-size: 1.25rem !important;
+  }
+  .MuiTypography-h6 {
+    font-size: 1rem !important;
+  }
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+  scrollbar-width: auto;
+  scrollbar-color: #3a3838 #eeeeee;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+  width: 5px;
+  
+}
+
+*::-webkit-scrollbar-track {
+  /* background: #eeeeee; */
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #adadad;
+  border-radius: 0px;
+  border: 0px solid #eeeeee;
+}
+
+ div:focus,a:focus, button:focus {
+  outline: none;
+}  
+
+@media screen and (max-width: 540px) {
+
+  /* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: auto;
+    scrollbar-color: #3a3838 #eeeeee;
+  
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #525252ad ;
+   
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color: #3a3838;
+    border-radius: 10px;
+    border: unset;
+  
+  }
+  p{
+    user-select: none;
+  }
+}
+/* Global print styles - hide export-only elements */
+@media print {
+  .hide-on-export {
+    display: none !important;
+  }
+}
+

@@ -1,0 +1,155 @@
+.canvas-area {
+  user-select: none;
+}
+
+.canvas-area * {
+  user-select: none;
+}
+
+/* Prevent text selection during drag */
+.canvas-area:active {
+  cursor: grabbing;
+}
+
+/* Element hover effect */
+.canvas-area > div:not(.resize-handle):hover {
+  outline: 1px dashed #90caf9;
+}
+
+/* Resize handles */
+.resize-handle {
+  transition: transform 0.1s ease;
+}
+
+.resize-handle:hover {
+  transform: scale(1.2);
+}
+
+/* Grid overlay */
+.canvas-grid {
+  background-image: 
+    linear-gradient(rgba(0,0,0,0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Toolbar buttons */
+.editor-toolbar-btn {
+  min-width: 40px !important;
+  padding: 8px !important;
+}
+
+/* Side panel tabs */
+.side-panel-tab {
+  min-width: 70px !important;
+  font-size: 11px !important;
+}
+
+/* Element selection glow */
+.element-selected {
+  box-shadow: 0 0 0 2px #2196f3, 0 0 10px rgba(33, 150, 243, 0.3);
+}
+
+/* Smooth transitions */
+.canvas-element {
+  transition: box-shadow 0.2s ease;
+}
+
+/* Color picker grid */
+.color-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+
+.color-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 4px;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  transition: transform 0.1s ease;
+}
+
+.color-swatch:hover {
+  transform: scale(1.15);
+}
+
+/* Template cards */
+.template-card {
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.template-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Scrollbar styling */
+.editor-sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+
+.editor-sidebar::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.editor-sidebar::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+.editor-sidebar::-webkit-scrollbar-thumb:hover {
+  background: #a1a1a1;
+}
+
+/* Property panel inputs */
+.property-input {
+  margin-bottom: 8px !important;
+}
+
+/* Action buttons */
+.action-btn-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+/* Loading overlay */
+.editor-loading {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255,255,255,0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Export dialog */
+.export-option {
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.export-option:hover {
+  background: #f5f5f5;
+}
+
+/* Keyboard shortcuts hint */
+.shortcuts-hint {
+  position: absolute;
+  bottom: 16px;
+  right: 16px;
+  background: rgba(0,0,0,0.7);
+  color: white;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 12px;
+}

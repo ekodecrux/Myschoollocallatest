@@ -1,0 +1,19 @@
+.screenInitializerContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    user-select: none;
+}
+
+.screenInitializerWrapper {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    background-color: #eeece0;
+    gap: 30px;
+   
+}
+
+.protedtedButton:hover {
+    color: black;
+}
