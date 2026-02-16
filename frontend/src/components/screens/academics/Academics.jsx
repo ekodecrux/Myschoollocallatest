@@ -135,6 +135,7 @@ const Academics = (props, state) => {
         }
         
         // Default: Build path from URL parts
+        // This handles any other academic subpaths like /views/academic/some-menu/some-submenu
         return 'ACADEMIC/' + menuParts.map(p => p.toUpperCase().replace(/-/g, ' ')).join('/');
     };
     
