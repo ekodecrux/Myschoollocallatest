@@ -6,16 +6,25 @@ import useDrag from '../../customTheme/signUpMenu/useDrag';
 import "../../customTheme/signUpMenu/hideScrollBar.css";
 import { newFilter, structureFilter } from './constant';
 import { useLocation } from "react-router-dom";
+
 const FormatFilter = (props) => {
     const [filtersList, setFiltersList] = React.useState(newFilter)
     const [structureFilterList, setStructureFilterList] = React.useState(structureFilter)
     const location = useLocation()
     const { dragStart, dragStop, dragMove, dragging } = useDrag();
+    
     const handleDrag = ({ scrollContainer }) => (e) => dragMove(e, (posDiff) => {
         if (scrollContainer.current) {
             scrollContainer.current.scrollLeft += posDiff;
         }
     });
+    
+    const handleReset = () => {
+        setFiltersList(newFilter);
+        props.setFormat(null);
+        props.setDocType(null);
+    };
+    
     const handleItemClick = (itemName, itemChildren, itemIndex, data) => {
         if (dragging) {
             return false;
@@ -37,6 +46,7 @@ const FormatFilter = (props) => {
             props.setFormat(null)
         }
     };
+    
     const handleSelected = (data) => {
         if (data.hasOwnProperty('type')) {
             if (props.formats) {
@@ -46,10 +56,28 @@ const FormatFilter = (props) => {
             return data.name === props.docType
         }
     }
+    
+    const isAnyFilterActive = props.formats || props.docType;
+    
     return (
         <div className="filterContainer">
             <div className="filterSelector">
-                <div style={{ maxWidth: "-webkit-fill-available" }}>
+                <div style={{ maxWidth: "-webkit-fill-available", display: 'flex', alignItems: 'center' }}>
+                    {isAnyFilterActive && (
+                        <div 
+                            onClick={handleReset} 
+                            style={{ 
+                                minWidth: '60px', 
+                                paddingRight: '12px',
+                                cursor: 'pointer'
+                            }} 
+                            tabIndex={0}
+                        >
+                            <p className="filterItemAll" style={{ margin: 0, whiteSpace: 'nowrap' }}>
+                                All
+                            </p>
+                        </div>
+                    )}
                     <ScrollMenu
                         scrollContainerClassName='signUpScrollContainer'
                         onMouseDown={() => dragStart}
@@ -60,7 +88,7 @@ const FormatFilter = (props) => {
                         style={{ width: '0px !important' }}>
                         {filtersList.map((k, i) => (
                             <Card
-                                itemId={k.name} // NOTE: itemId is required for track items
+                                itemId={k.name}
                                 title={k.name}
                                 key={k.name}
                                 onClick={() => handleItemClick(k.name, k.children, i, k)}
@@ -73,6 +101,7 @@ const FormatFilter = (props) => {
         </div>
     );
 }
+
 function Card({ onClick, selected, title }) {
     const visibility = React.useContext(VisibilityContext);
     return (
@@ -82,4 +111,5 @@ function Card({ onClick, selected, title }) {
         </div>
     )
 }
+
 export default FormatFilter;

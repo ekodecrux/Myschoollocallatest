@@ -1,5 +1,4 @@
 // Filter data matching database structure
-// This file contains filter options for Academic and One Click Resource Center sections
 
 // Academic class filters - subjects for each class
 export const academicSubjects = [

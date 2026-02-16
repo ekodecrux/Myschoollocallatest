@@ -7,7 +7,6 @@ var roles = ['Student', 'Teacher', 'School', 'Parent',  'Publisher']
 const ScrollMenuBtn = (props) => {
     const [items] = React.useState(roles);
     // const [selected, setSelected] = React.useState("Student");
-    // NOTE: for drag by mouse
     const { dragStart, dragStop, dragMove, dragging } = useDrag();
     const handleDrag = ({ scrollContainer }) => (e) => dragMove(e, (posDiff) => {
         if (scrollContainer.current) {
@@ -19,7 +18,6 @@ const ScrollMenuBtn = (props) => {
             return false;
         }
         // Only switch roles, don't allow deselecting to null
-        // This prevents errors when formFields[null] would be accessed
         if (props.userRole !== itemId) {
             props.setUserRole(itemId);
         }

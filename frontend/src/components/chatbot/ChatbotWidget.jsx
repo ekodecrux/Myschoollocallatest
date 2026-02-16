@@ -192,7 +192,6 @@ const ChatbotWidget = () => {
     };
   }, []);
 
-  // This component doesn't render anything visible - it just sets up the chatbot widget
   return null;
 };
 
