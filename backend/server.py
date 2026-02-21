@@ -815,8 +815,16 @@ async def login(request: UserLoginRequest):
         "schoolCode": user.get("school_code")
     }
     
+    logger.info(f"Login successful - User ID: {user['id']}, Name: {user.get('name')}, Email: {user['email']}")
+    
     access_token = create_access_token(token_data)
     refresh_token = create_refresh_token(token_data)
+    
+    # Update last_login timestamp
+    await db.users.update_one(
+        {"id": user["id"]},
+        {"$set": {"last_login": datetime.now(timezone.utc)}}
+    )
     
     # Get school info if applicable
     school_info = None
@@ -1212,6 +1220,12 @@ async def login_via_otp(body: dict):
         await db.users.insert_one(user)
     
     await db.otp_sessions.delete_one({"_id": session["_id"]})
+    
+    # Update last_login timestamp
+    await db.users.update_one(
+        {"id": user["id"]},
+        {"$set": {"last_login": datetime.now(timezone.utc)}}
+    )
     
     token_data = {
         "userId": user["id"],
@@ -2356,6 +2370,7 @@ async def add_user(
             raise HTTPException(status_code=403, detail="Admins can only add school staff and students")
     
     # Note: UserRole.SCHOOL doesn't exist - schools use SCHOOL_ADMIN role
+    # This check is redundant as SCHOOL_ADMIN is already handled above
     
     if user_role == UserRole.TEACHER:
         if request.user_role != UserRole.STUDENT:
@@ -2764,9 +2779,11 @@ async def use_credits(
         }
     
     new_credits = current_credits - credits_to_use
+    credits_used = user.get("credits_used", 0) + credits_to_use
+    
     await db.users.update_one(
         {"id": user_id},
-        {"$set": {"credits": new_credits}}
+        {"$set": {"credits": new_credits, "credits_used": credits_used}}
     )
     
     # Warning if credits are low
@@ -2961,29 +2978,52 @@ async def bulk_upload_schools(
 ):
     """
     Bulk upload schools from Excel/CSV file.
-    Required columns: school_name, admin_email
-    Optional columns: admin_name, address, city, state
+    Required columns: school_code, school_name, school_email, principal_name, mobile_number
+    Optional columns: postal_code, address, city, state
     """
     import pandas as pd
     import io
+    import re
     
     content = await file.read()
     
     try:
-        # Try Excel first, then CSV
+        # Try Excel first, then CSV - handle NaN values properly
         try:
-            df = pd.read_excel(io.BytesIO(content))
+            df = pd.read_excel(io.BytesIO(content), keep_default_na=False, na_values=[''])
         except:
-            df = pd.read_csv(io.BytesIO(content))
+            df = pd.read_csv(io.BytesIO(content), keep_default_na=False, na_values=[''])
         
-        # Clean column names
+        # Replace any remaining NaN values with empty string
+        df = df.fillna('')
+        
+        # Log original columns for debugging
+        logger.info(f"Original columns from file: {list(df.columns)}")
+        
+        # Clean column names - remove asterisks and normalize
         df.columns = [str(c).strip().lower().replace(' ', '_').replace('*', '') for c in df.columns]
         
-        # Required columns check
-        required_cols = ['school_name', 'admin_email']
+        # Log cleaned columns for debugging
+        logger.info(f"Cleaned columns: {list(df.columns)}")
+        
+        # Support both old (admin_email) and new (school_email) column names
+        if 'admin_email' in df.columns and 'school_email' not in df.columns:
+            df = df.rename(columns={'admin_email': 'school_email'})
+            logger.info("Renamed admin_email to school_email for backward compatibility")
+        
+        # Required columns - postal_code is now optional
+        required_cols = ['school_code', 'school_name', 'school_email', 'principal_name', 'mobile_number']
         missing_cols = [col for col in required_cols if col not in df.columns]
         if missing_cols:
+            logger.error(f"Missing columns: {missing_cols}. Available: {list(df.columns)}")
             raise HTTPException(status_code=400, detail=f"Missing required columns: {missing_cols}")
+        
+        # Helper function to validate name fields (only letters and spaces allowed)
+        def is_valid_name(name):
+            if not name or name.lower() == 'nan':
+                return False
+            # Allow only letters (including accented), spaces, and common name punctuation like apostrophe
+            return bool(re.match(r"^[A-Za-z\s'.-]+$", name))
         
         results = {
             "total": len(df),
@@ -2994,35 +3034,75 @@ async def bulk_upload_schools(
         
         for idx, row in df.iterrows():
             try:
+                school_code = str(row.get('school_code', '')).strip()
                 school_name = str(row.get('school_name', '')).strip()
-                admin_email = str(row.get('admin_email', '')).strip().lower()
+                school_email = str(row.get('school_email', '')).strip().lower()
+                principal_name = str(row.get('principal_name', '')).strip()
+                mobile_number = str(row.get('mobile_number', '')).strip()
+                postal_code = str(row.get('postal_code', '')).strip() if 'postal_code' in df.columns else ''
                 
-                # NaN validation
-                if school_name.lower() == 'nan' or not school_name:
+                # Validate required fields
+                if not school_code or school_code.lower() == 'nan':
+                    results["failed"] += 1
+                    results["errors"].append(f"Row {idx+2}: Invalid or missing school_code")
+                    continue
+                
+                if not school_name or school_name.lower() == 'nan':
                     results["failed"] += 1
                     results["errors"].append(f"Row {idx+2}: Invalid or missing school_name")
                     continue
                 
-                if admin_email.lower() == 'nan' or not admin_email or '@' not in admin_email:
+                # Validate school_name - no numeric or special characters
+                if not is_valid_name(school_name):
                     results["failed"] += 1
-                    results["errors"].append(f"Row {idx+2}: Invalid or missing admin_email")
+                    results["errors"].append(f"Row {idx+2}: School name should only contain letters and spaces")
                     continue
                 
-                # Check if school or admin already exists
+                if not school_email or school_email.lower() == 'nan' or '@' not in school_email:
+                    results["failed"] += 1
+                    results["errors"].append(f"Row {idx+2}: Invalid or missing school_email")
+                    continue
+                
+                if not principal_name or principal_name.lower() == 'nan':
+                    results["failed"] += 1
+                    results["errors"].append(f"Row {idx+2}: Invalid or missing principal_name")
+                    continue
+                
+                # Validate principal_name - no numeric or special characters
+                if not is_valid_name(principal_name):
+                    results["failed"] += 1
+                    results["errors"].append(f"Row {idx+2}: Principal name should only contain letters and spaces")
+                    continue
+                
+                if not mobile_number or mobile_number.lower() == 'nan':
+                    results["failed"] += 1
+                    results["errors"].append(f"Row {idx+2}: Invalid or missing mobile_number")
+                    continue
+                
+                # postal_code is now optional - skip validation if empty
+                if postal_code and postal_code.lower() == 'nan':
+                    postal_code = ''
+                
+                # Check if school code already exists
+                existing_code = await db.users.find_one({"school_code": school_code})
+                if existing_code:
+                    results["failed"] += 1
+                    results["errors"].append(f"Row {idx+2}: School code '{school_code}' already exists")
+                    continue
+                
+                # Check if school name already exists
                 existing_school = await db.schools.find_one({"name": {"$regex": f"^{re.escape(school_name)}$", "$options": "i"}})
                 if existing_school:
                     results["failed"] += 1
                     results["errors"].append(f"Row {idx+2}: School '{school_name}' already exists")
                     continue
                 
-                existing_user = await db.users.find_one({"email": admin_email})
+                # Check if email already exists
+                existing_user = await db.users.find_one({"email": school_email})
                 if existing_user:
                     results["failed"] += 1
-                    results["errors"].append(f"Row {idx+2}: Admin email '{admin_email}' already exists")
+                    results["errors"].append(f"Row {idx+2}: Email '{school_email}' already exists")
                     continue
-                
-                # Generate school code
-                school_code = f"SC{str(uuid.uuid4())[:8].upper()}"
                 
                 # Generate password
                 password = generate_password()
@@ -3032,17 +3112,18 @@ async def bulk_upload_schools(
                 admin_id = str(uuid.uuid4())
                 admin_user = {
                     "id": admin_id,
-                    "email": admin_email,
+                    "email": school_email,
                     "password_hash": password_hash,
-                    "name": str(row.get('admin_name', '')).strip() or school_name + " Admin",
+                    "name": school_name + " Admin",
                     "role": UserRole.SCHOOL_ADMIN,
                     "school_code": school_code,
-                    "principal_name": str(row.get('principal_name', '')).strip() or None,
-                    "mobile_number": str(row.get('mobile_number', '')).strip() or None,
+                    "school_name": school_name,
+                    "principal_name": principal_name,
+                    "mobile_number": mobile_number,
                     "address": str(row.get('address', '')).strip() or None,
                     "city": str(row.get('city', '')).strip() or None,
                     "state": str(row.get('state', '')).strip() or None,
-                    "postal_code": str(row.get('postal_code', '')).strip() or None,
+                    "postal_code": postal_code,
                     "credits": 100,
                     "is_active": True,
                     "created_at": datetime.now(timezone.utc).isoformat(),
@@ -3057,10 +3138,12 @@ async def bulk_upload_schools(
                     "code": school_code,
                     "name": school_name,
                     "admin_id": admin_id,
-                    "admin_email": admin_email,
+                    "admin_email": school_email,
+                    "principal_name": principal_name,
                     "address": str(row.get('address', '')).strip() or None,
                     "city": str(row.get('city', '')).strip() or None,
                     "state": str(row.get('state', '')).strip() or None,
+                    "postal_code": postal_code,
                     "is_active": True,
                     "created_at": datetime.now(timezone.utc).isoformat(),
                     "created_by": current_user["id"]
@@ -3069,11 +3152,10 @@ async def bulk_upload_schools(
                 await db.schools.insert_one(school)
                 
                 # Send welcome email
-                admin_name = str(row.get('admin_name', '')).strip() or school_name + " Admin"
                 background_tasks.add_task(
                     send_welcome_email,
-                    admin_email,
-                    admin_name,
+                    school_email,
+                    principal_name or school_name + " Admin",
                     password,
                     UserRole.SCHOOL_ADMIN,
                     school_name
@@ -3114,11 +3196,14 @@ async def bulk_upload_users(
     content = await file.read()
     
     try:
-        # Try Excel first, then CSV
+        # Try Excel first, then CSV - handle NaN values properly
         try:
-            df = pd.read_excel(io.BytesIO(content))
+            df = pd.read_excel(io.BytesIO(content), keep_default_na=False, na_values=[''])
         except:
-            df = pd.read_csv(io.BytesIO(content))
+            df = pd.read_csv(io.BytesIO(content), keep_default_na=False, na_values=[''])
+        
+        # Replace any remaining NaN values with empty string
+        df = df.fillna('')
         
         # Clean column names
         df.columns = [str(c).strip().lower().replace(' ', '_').replace('*', '') for c in df.columns]
@@ -3254,9 +3339,12 @@ async def bulk_upload_teachers(
     
     try:
         try:
-            df = pd.read_excel(io.BytesIO(content))
+            df = pd.read_excel(io.BytesIO(content), keep_default_na=False, na_values=[''])
         except:
-            df = pd.read_csv(io.BytesIO(content))
+            df = pd.read_csv(io.BytesIO(content), keep_default_na=False, na_values=[''])
+        
+        # Replace any remaining NaN values with empty string
+        df = df.fillna('')
         
         # Clean column names - remove asterisks and special chars
         df.columns = [str(c).strip().lower().replace(' ', '_').replace('*', '') for c in df.columns]
@@ -3419,9 +3507,12 @@ async def bulk_upload_students(
     
     try:
         try:
-            df = pd.read_excel(io.BytesIO(content))
+            df = pd.read_excel(io.BytesIO(content), keep_default_na=False, na_values=[''])
         except:
-            df = pd.read_csv(io.BytesIO(content))
+            df = pd.read_csv(io.BytesIO(content), keep_default_na=False, na_values=[''])
+        
+        # Replace any remaining NaN values with empty string
+        df = df.fillna('')
         
         # Clean column names - remove asterisks and special chars
         df.columns = [str(c).strip().lower().replace(' ', '_').replace('*', '') for c in df.columns]
@@ -3582,12 +3673,15 @@ async def get_bulk_upload_template(
     
     if type == "schools":
         return {
-            "required_columns": ["school_name", "admin_email"],
-            "optional_columns": ["admin_name", "address", "city", "state"],
+            "required_columns": ["school_code", "school_name", "school_email", "principal_name", "mobile_number", "postal_code"],
+            "optional_columns": ["address", "city", "state"],
             "example": {
+                "school_code": "SCH001",
                 "school_name": "ABC Public School",
-                "admin_email": "admin@abcschool.com",
-                "admin_name": "John Smith",
+                "school_email": "admin@abcschool.com",
+                "principal_name": "Dr. Smith",
+                "mobile_number": "9876543210",
+                "postal_code": "400001",
                 "address": "123 Main Street",
                 "city": "Mumbai",
                 "state": "Maharashtra"
@@ -4176,11 +4270,16 @@ async def fetch_images(body: dict, response: Response):
                     is_one_click_menu = True
     
     if is_one_click_menu:
+        # This is a One Click Resource Centre item accessed from main nav (PRINT-RICH/IMAGE BANK/ANIMALS)
         query["category"] = "ONE CLICK RESOURCE CENTRE"
         menu_lower = parts[1].lower().replace('_', ' ').replace('-', ' ')
         query["menu"] = menu_name_map.get(menu_lower, parts[1].upper())
         if len(parts) > 2:
             query["sub_menu"] = {"$regex": f"^{parts[2]}$", "$options": "i"}
+        if len(parts) > 3:
+            query["subject"] = {"$regex": f"^{parts[3]}$", "$options": "i"}
+        if len(parts) > 4:
+            query["book_type"] = {"$regex": f"^{parts[4]}$", "$options": "i"}
     elif parts:
         # Standard path processing
         first_part = parts[0].upper().replace('-', '_').replace(' ', '_')
@@ -4200,6 +4299,7 @@ async def fetch_images(body: dict, response: Response):
             if len(parts) > 3:
                 # Fourth part is subject (ENGLISH, MATHS, etc.)
                 query["subject"] = {"$regex": f"^{parts[3]}$", "$options": "i"}
+                logger.info(f"Added subject filter: {parts[3]}")
             
             if len(parts) > 4:
                 # Fifth part could be book_type or unit_lesson
@@ -4296,6 +4396,7 @@ async def fetch_images(body: dict, response: Response):
     
     # Query database for images
     images = await db.resource_images.find(query, {"_id": 0}).limit(images_per_page).to_list(images_per_page)
+    logger.info(f"Found {len(images)} images in MongoDB for query")
     
     # Transform to expected format - key should be the full path for frontend compatibility
     result_images = {}
@@ -4410,7 +4511,8 @@ async def fetch_images(body: dict, response: Response):
                 "continuationToken": None,
                 "isTruncated": len(result_images) >= images_per_page,
                 "filters": filters,
-                "filterField": filter_field
+                "filterField": filter_field,
+                "totalCount": len(result_images)  # Use actual image count for R2 results
             }
             set_cached_r2_listing(cache_key, r2_result)
             return r2_result
@@ -4426,15 +4528,20 @@ async def fetch_images(body: dict, response: Response):
             "continuationToken": None,
             "isTruncated": False,
             "filters": filters,
-            "filterField": filter_field
+            "filterField": filter_field,
+            "totalCount": 0
         }
+    
+    # Get total count for pagination
+    total_count = await db.resource_images.count_documents(query)
     
     return {
         "list": result_images,
         "continuationToken": None,
         "isTruncated": len(result_images) >= images_per_page,
         "filters": filters,
-        "filterField": filter_field
+        "filterField": filter_field,
+        "totalCount": total_count
     }
 
 # Academic filter endpoints
@@ -5422,6 +5529,14 @@ async def get_dashboard_stats(current_user: dict = Depends(get_current_user)):
         stats["activeUsers"] = await db.users.count_documents({"school_code": school_code, "disabled": {"$ne": True}})
         stats["disabledUsers"] = await db.users.count_documents({"school_code": school_code, "disabled": True})
         
+        # Get total credits used by users in this school
+        credit_pipeline = [
+            {"$match": {"school_code": school_code}},
+            {"$group": {"_id": None, "total": {"$sum": "$credits_used"}}}
+        ]
+        credit_result = await db.users.aggregate(credit_pipeline).to_list(1)
+        stats["totalCreditsUsed"] = credit_result[0]["total"] if credit_result and credit_result[0].get("total") else 0
+        
         # Recent registrations in this school
         recent_users = await db.users.find(
             {"school_code": school_code}, {"_id": 0, "name": 1, "email": 1, "role": 1, "created_at": 1}
@@ -5450,6 +5565,76 @@ async def get_dashboard_stats(current_user: dict = Depends(get_current_user)):
         })
     
     return stats
+
+@admin_router.get("/user-logs")
+async def get_user_logs(
+    limit: int = 10,
+    current_user: dict = Depends(get_current_user)
+):
+    """Get recent user activity logs"""
+    user_role = current_user.get("role")
+    school_code = current_user.get("school_code")
+    
+    query = {}
+    if user_role == UserRole.SCHOOL_ADMIN:
+        query["school_code"] = school_code
+    elif user_role == UserRole.TEACHER:
+        query["teacher_code"] = current_user.get("teacher_code")
+    
+    # Get recent login/activity logs from users collection
+    logs = []
+    
+    # Get users with last_login ordered by most recent
+    users = await db.users.find(
+        {**query, "last_login": {"$exists": True}},
+        {"_id": 0, "name": 1, "email": 1, "role": 1, "last_login": 1, "created_at": 1, "school_name": 1, "credits_used": 1}
+    ).sort("last_login", -1).limit(limit).to_list(limit)
+    
+    for user in users:
+        if user.get("last_login"):
+            logs.append({
+                "user": user.get("name", "Unknown"),
+                "email": user.get("email", ""),
+                "action": "login",
+                "timestamp": user.get("last_login").isoformat() if isinstance(user.get("last_login"), datetime) else user.get("last_login"),
+                "school": user.get("school_name", ""),
+                "details": f"Credits used: {user.get('credits_used', 0)}"
+            })
+    
+    return {"logs": logs}
+
+@admin_router.get("/user-logs/stats")
+async def get_user_logs_stats(current_user: dict = Depends(get_current_user)):
+    """Get user activity statistics"""
+    user_role = current_user.get("role")
+    school_code = current_user.get("school_code")
+    
+    query = {}
+    if user_role == UserRole.SCHOOL_ADMIN:
+        query["school_code"] = school_code
+    elif user_role == UserRole.TEACHER:
+        query["teacher_code"] = current_user.get("teacher_code")
+    
+    from datetime import datetime, timedelta
+    today = datetime.now().replace(hour=0, minute=0, second=0, microsecond=0)
+    
+    # Today's activity (logins today)
+    today_query = {**query, "last_login": {"$gte": today}}
+    todays_activity = await db.users.count_documents(today_query)
+    
+    # Total downloads (sum of credits_used)
+    pipeline = [
+        {"$match": query} if query else {"$match": {}},
+        {"$group": {"_id": None, "total": {"$sum": "$credits_used"}}}
+    ]
+    download_result = await db.users.aggregate(pipeline).to_list(1)
+    total_downloads = download_result[0]["total"] if download_result else 0
+    
+    return {
+        "todays_activity": todays_activity,
+        "total_downloads": total_downloads,
+        "recent_activity_count": await db.users.count_documents({**query, "last_login": {"$exists": True}})
+    }
 
 # ============== ORDERS ROUTES ==============
 orders_router = APIRouter(prefix="/orders", tags=["Orders"])
@@ -5776,6 +5961,7 @@ async def verify_razorpay_payment(
             'razorpay_signature': request.razorpay_signature
         }
         
+        # This will raise an exception if signature is invalid
         razorpay_client.utility.verify_payment_signature(params_dict)
         
         # Find the order
@@ -6107,7 +6293,10 @@ async def import_images_from_excel(
         if not data_sheet:
             data_sheet = xl.sheet_names[1] if len(xl.sheet_names) > 1 else xl.sheet_names[0]
         
-        df = pd.read_excel(xl, sheet_name=data_sheet)
+        df = pd.read_excel(xl, sheet_name=data_sheet, keep_default_na=False, na_values=[''])
+        
+        # Replace any remaining NaN values with empty string
+        df = df.fillna('')
         
         # Clean column names
         df.columns = [str(c).strip() for c in df.columns]

@@ -577,7 +577,7 @@ const MicroScheduler = () => {
                 const subject = getWeekDayPeriodSubject(dayIdx, pIdx);
                 return (
                   <Box key={dayIdx} onDragOver={handleDragOver} onDrop={() => handleDropPeriod(dayIdx, pIdx)}
-                    onClick={() => subject && handleClearPeriod(dayIdx, pIdx)}
+                    onDoubleClick={() => subject && handleClearPeriod(dayIdx, pIdx)}
                     sx={{ p: { xs: 0.25, md: 1 }, backgroundColor: subject ? subject.color : '#fafafa', color: subject ? '#fff' : '#999',
                       textAlign: 'center', cursor: 'pointer', minHeight: { xs: 35, md: 50 }, display: 'flex', alignItems: 'center',
                       justifyContent: 'center', fontSize: { xs: '0.55rem', md: '0.75rem' }, fontWeight: subject ? 'bold' : 'normal',
@@ -622,7 +622,7 @@ const MicroScheduler = () => {
               const hasSubjects = allSubjects.length > 0;
               return (
                 <Box key={`${wIdx}-${dIdx}`} onDragOver={handleDragOver} onDrop={() => dayNum && handleDropCalendar(dayMonth, dayNum)}
-                  onClick={() => hasSubjects && handleClearCalendar(dayMonth, dayNum)}
+                  onDoubleClick={() => hasSubjects && handleClearCalendar(dayMonth, dayNum)}
                   sx={{ p: 0.5, minHeight: 70, border: '1px solid #e0e0e0', borderRadius: 1,
                     backgroundColor: dayNum ? (isCurrentMonth ? '#fff' : '#f9f9f9') : '#f5f5f5',
                     cursor: dayNum ? 'pointer' : 'default', opacity: isCurrentMonth ? 1 : 0.6,
@@ -690,7 +690,7 @@ const MicroScheduler = () => {
                       const subject = dateKey ? getSubjectForDate(dateKey) : null;
                       return (
                         <Box key={`${wIdx}-${dIdx}`} onDragOver={handleDragOver} onDrop={() => dayNum && handleDropCalendar(dayMonth, dayNum)}
-                          onClick={() => subject && handleClearCalendar(dayMonth, dayNum)}
+                          onDoubleClick={() => subject && handleClearCalendar(dayMonth, dayNum)}
                           sx={{ height: 16, backgroundColor: subject ? subject.color : (dayNum ? (isCurrentMonth ? '#fafafa' : '#e8e8e8') : '#f0f0f0'),
                             borderRadius: '2px', cursor: dayNum ? 'pointer' : 'default', display: 'flex', alignItems: 'center',
                             justifyContent: 'center', color: subject ? '#fff' : (isCurrentMonth ? '#333' : '#999'), fontSize: '0.5rem',
@@ -843,19 +843,19 @@ const MicroScheduler = () => {
       <Box sx={{ flex: 1, display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
         {/* Toolbar */}
         <Paper sx={{ p: 1, borderRadius: 0, display: 'flex', alignItems: 'center', gap: 1, flexWrap: 'wrap' }}>
-          <Button size="small" variant={viewMode === 'week' ? 'contained' : 'outlined'} startIcon={<WeekIcon />}
+          <Button size="small" variant={viewMode === 'week' ? 'contained' : 'outlined'} startIcon={<WeekIcon />} sx={{ '&:hover': { backgroundColor: viewMode === 'week' ? '#333' : 'rgba(0,0,0,0.04)', color: viewMode === 'week' ? '#fff' : '#000', borderColor: '#000' } }}
             onClick={() => setViewMode('week')}>Week</Button>
-          <Button size="small" variant={viewMode === 'month' ? 'contained' : 'outlined'} startIcon={<MonthIcon />}
+          <Button size="small" variant={viewMode === 'month' ? 'contained' : 'outlined'} startIcon={<MonthIcon />} sx={{ '&:hover': { backgroundColor: viewMode === 'month' ? '#333' : 'rgba(0,0,0,0.04)', color: viewMode === 'month' ? '#fff' : '#000', borderColor: '#000' } }}
             onClick={() => setViewMode('month')}>Month</Button>
-          <Button size="small" variant={viewMode === 'year' ? 'contained' : 'outlined'} startIcon={<YearIcon />}
+          <Button size="small" variant={viewMode === 'year' ? 'contained' : 'outlined'} startIcon={<YearIcon />} sx={{ '&:hover': { backgroundColor: viewMode === 'year' ? '#333' : 'rgba(0,0,0,0.04)', color: viewMode === 'year' ? '#fff' : '#000', borderColor: '#000' } }}
             onClick={() => setViewMode('year')}>Year</Button>
           <Divider orientation="vertical" flexItem sx={{ mx: 1 }} />
           <Button size="small" variant="outlined" startIcon={<SaveIcon />} onClick={() => { setEditingTemplate(null); setScheduleName(''); setSaveDialog(true); }}
-            sx={{ color: '#1976d2', borderColor: '#1976d2', '&:hover': { backgroundColor: '#1976d2', color: '#fff', borderColor: '#1976d2' } }}>Save</Button>
+            sx={{ color: '#1976d2', borderColor: '#1976d2', '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)', color: '#000', borderColor: '#000' } }}>Save</Button>
           <Button size="small" variant="outlined" startIcon={<DownloadIcon />} onClick={handleExport}
-            sx={{ color: '#1976d2', borderColor: '#1976d2', '&:hover': { backgroundColor: '#1976d2', color: '#fff', borderColor: '#1976d2' } }}>Export</Button>
+            sx={{ color: '#1976d2', borderColor: '#1976d2', '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)', color: '#000', borderColor: '#000' } }}>Export</Button>
           <Button size="small" variant="outlined" startIcon={<PrintIcon />} onClick={handlePrint}
-            sx={{ color: '#1976d2', borderColor: '#1976d2', '&:hover': { backgroundColor: '#1976d2', color: '#fff', borderColor: '#1976d2' } }}>Print</Button>
+            sx={{ color: '#1976d2', borderColor: '#1976d2', '&:hover': { backgroundColor: 'rgba(0,0,0,0.04)', color: '#000', borderColor: '#000' } }}>Print</Button>
         </Paper>
         {/* Schedule Content */}
         <Box sx={{ flex: 1, overflow: 'auto', p: 2 }}>

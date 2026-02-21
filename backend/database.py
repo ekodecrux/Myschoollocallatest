@@ -41,3 +41,7 @@ async def close_db():
 
 # Export db for use in other modules
 __all__ = ['db', 'client', 'init_db', 'close_db']
+
+async def get_database():
+    """Dependency to get database instance"""
+    return db

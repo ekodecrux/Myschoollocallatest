@@ -113,7 +113,7 @@ const PendingApproval = (props) => {
                                     s3Path: k.pendingApproval?.s3Path || k.s3Path || ''
                                 })}>
                                 <img src={k.url} alt="Image not available" width={150} height={200} />
-                                <p>{k.pendingApproval?.fileName || k.fileName || 'Unnamed'}</p>
+                                <p>{k.title || k.pendingApproval?.title || k.pendingApproval?.fileName || k.fileName || k.original_filename || 'No Name'}</p>
                             </div>
                         )
                     })}

@@ -1,0 +1,10 @@
+<svg id="Component_33_16" data-name="Component 33 – 16" xmlns="http://www.w3.org/2000/svg" width="44" height="44" viewBox="0 0 44 44">
+  <g id="Rectangle_4180" data-name="Rectangle 4180" fill="#fff" stroke="#7da8ff" strokeWidth="1">
+    <rect width="44" height="44" rx="22" stroke="none"/>
+    <rect x="0.5" y="0.5" width="43" height="43" rx="21.5" fill="none"/>
+  </g>
+  <g id="Group_10215" data-name="Group 10215" transform="translate(10 10)">
+    <path id="Path_3963" data-name="Path 3963" d="M0,0H24V24H0Z" fill="none"/>
+    <path id="Path_3964" data-name="Path 3964" d="M4,22a8,8,0,0,1,16,0H18A6,6,0,0,0,6,22Zm8-9a6,6,0,1,1,6-6A6,6,0,0,1,12,13Zm0-2A4,4,0,1,0,8,7,4,4,0,0,0,12,11Z"/>
+  </g>
+</svg>

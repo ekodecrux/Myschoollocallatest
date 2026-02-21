@@ -506,3 +506,39 @@ a>p {
 
 
 } */
+
+/* Sign Up button hover effect */
+.buttonSignUp {
+    color: #494949 !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.buttonSignUp:hover {
+    color: #1976d2 !important;
+    background-color: rgba(25, 118, 210, 0.08) !important;
+}
+
+/* Sign In button hover effect */
+.buttonSignIn {
+    color: #494949 !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.buttonSignIn:hover {
+    color: #1976d2 !important;
+    background-color: rgba(25, 118, 210, 0.08) !important;
+}
+
+/* Download App button hover effect */
+.buttonDownloadApp {
+    color: #494949 !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.buttonDownloadApp:hover {
+    color: #1976d2 !important;
+    background-color: rgba(25, 118, 210, 0.08) !important;
+}

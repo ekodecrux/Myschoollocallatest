@@ -357,7 +357,9 @@ const Navbar = (props) => {
                                         return `/views/sections/image-bank/${childPath}`;
                                       }
                                       
-                                      const basePath = `/views/${currentBasePath}/${k.title.toLowerCase().replace(' ', '-')}`;
+                                      const academicOnlyTabs = ['class', 'grade'];
+                                      const effectiveBasePath = academicOnlyTabs.includes(parentNormalized) ? 'academic' : currentBasePath;
+                                      const basePath = `/views/${effectiveBasePath}/${k.title.toLowerCase().replace(' ', '-')}`;
                                       // Don't add child path if it's essentially the same as parent
                                       const childNormalized = childPath.toLowerCase().replace(/[\s-]/g, '');
                                       if (parentNormalized === childNormalized) {
@@ -443,7 +445,9 @@ const Navbar = (props) => {
                                     return `/views/sections/image-bank/${childPath}`;
                                   }
                                   
-                                  const basePath = `/views/${currentBasePath}/${k.title.toLowerCase().replace(' ', '-')}`;
+                                  const academicOnlyTabs = ['class', 'grade'];
+                                      const effectiveBasePath = academicOnlyTabs.includes(parentNormalized) ? 'academic' : currentBasePath;
+                                      const basePath = `/views/${effectiveBasePath}/${k.title.toLowerCase().replace(' ', '-')}`;
                                   const childNormalized = childPath.toLowerCase().replace(/[\s-]/g, '');
                                   if (parentNormalized === childNormalized) {
                                     return basePath;

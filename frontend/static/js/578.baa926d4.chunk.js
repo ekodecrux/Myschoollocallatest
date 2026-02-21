@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkfrontend=self.webpackChunkfrontend||[]).push([[578],{57578(e,n,r){r.r(n),r.d(n,{default:()=>a});r(65043);var s=r(7239),t=r(70579);const a=()=>(0,t.jsx)(s.A,{makerType:"chart"})}}]);
+//# sourceMappingURL=578.baa926d4.chunk.js.map

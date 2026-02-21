@@ -186,3 +186,29 @@
         padding: 0px 20px;
     }
 }
+/* Ensure proper spacing between plan cards and text */
+.subscriptionContainer .textContainer {
+    margin-top: 50px;
+    padding: 20px;
+    text-align: center;
+}
+
+.subscriptionContainer .headingSubscription {
+    margin-bottom: 15px;
+}
+
+/* Fix for subscription cards alignment */
+.subscriptionImageConatiner {
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Ensure Pay button is properly visible */
+.subscriptionContainer .MuiButton-contained {
+    transition: all 0.2s ease !important;
+}
+
+.subscriptionContainer .MuiButton-contained:hover {
+    opacity: 0.9 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15) !important;
+}

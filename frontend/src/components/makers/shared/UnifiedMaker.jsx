@@ -239,11 +239,13 @@ const UnifiedMaker = forwardRef(({
 
   // Mouse drag handlers for moving elements
   const handleMouseDown = (e, element) => {
+    e.stopPropagation();
+    // Always allow selection, even for locked elements
+    setSelectedElement(element);
+    // Prevent dragging if locked
     if (element.locked) return;
     // Don't start dragging if we're already resizing
     if (isResizing) return;
-    e.stopPropagation();
-    setSelectedElement(element);
     setIsDragging(true);
     setDragStart({ x: e.clientX, y: e.clientY });
     setDragElementStart({ x: element.x, y: element.y });
@@ -896,7 +898,7 @@ const UnifiedMaker = forwardRef(({
         return wrapWithResizeHandles(
           <Box
             sx={{ width: '100%', height: '100%', display: 'flex', alignItems: 'center', justifyContent: element.align || 'center' }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           >
             <Typography
               sx={{
@@ -919,7 +921,7 @@ const UnifiedMaker = forwardRef(({
         return wrapWithResizeHandles(
           <Box
             sx={{ width: '100%', height: '100%' }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           >
             <img
               src={element.src}
@@ -941,7 +943,7 @@ const UnifiedMaker = forwardRef(({
               border: `${element.strokeWidth}px solid ${element.stroke}`,
               borderRadius: '4px'
             }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           />
         );
         
@@ -955,7 +957,7 @@ const UnifiedMaker = forwardRef(({
               border: `${element.strokeWidth}px solid ${element.stroke}`,
               borderRadius: '50%'
             }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           />
         );
         
@@ -963,7 +965,7 @@ const UnifiedMaker = forwardRef(({
         return wrapWithResizeHandles(
           <Box
             sx={{ width: '100%', height: '100%', background: 'transparent' }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           >
             <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none" style={{ pointerEvents: 'none' }}>
               <polygon
@@ -980,7 +982,7 @@ const UnifiedMaker = forwardRef(({
         return wrapWithResizeHandles(
           <Box
             sx={{ width: '100%', height: '100%', background: 'transparent' }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           >
             <svg width="100%" height="100%" viewBox="0 0 100 100" style={{ pointerEvents: 'none' }}>
               <polygon
@@ -997,7 +999,7 @@ const UnifiedMaker = forwardRef(({
         return wrapWithResizeHandles(
           <Box
             sx={{ width: '100%', height: '100%', background: 'transparent' }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           >
             <svg width="100%" height="100%" style={{ pointerEvents: 'none' }}>
               <line x1="0" y1="50%" x2="100%" y2="50%" stroke={element.stroke} strokeWidth={element.strokeWidth} />
@@ -1009,7 +1011,7 @@ const UnifiedMaker = forwardRef(({
         return wrapWithResizeHandles(
           <Box
             sx={{ width: '100%', height: '100%', background: 'transparent' }}
-            onMouseDown={(e) => handleMouseDown(e, element)}
+            onMouseDown={(e) => handleMouseDown(e, element)} onClick={(e) => e.stopPropagation()}
           >
             <svg width="100%" height="100%" viewBox="0 0 100 20" style={{ pointerEvents: 'none' }}>
               <defs>
@@ -1300,7 +1302,7 @@ const UnifiedMaker = forwardRef(({
               backgroundImage: showGrid ? 'linear-gradient(#e0e0e0 1px, transparent 1px), linear-gradient(90deg, #e0e0e0 1px, transparent 1px)' : 'none',
               backgroundSize: showGrid ? '20px 20px' : 'auto'
             }}
-            onClick={() => {
+            onClick={(e) => { if (e.target !== e.currentTarget) return;
               // Don't deselect if we just finished dragging
               if (!wasDraggingRef.current) {
                 setSelectedElement(null);
@@ -1360,7 +1362,7 @@ const UnifiedMaker = forwardRef(({
                   size="small" 
                   variant="outlined" 
                   fullWidth
-                  onClick={() => {
+                  onClick={(e) => { if (e.target !== e.currentTarget) return;
                     // Find the last shape added (to fit image into)
                     const shapes = elements.filter(e => 
                       [ELEMENT_TYPES.RECTANGLE, ELEMENT_TYPES.CIRCLE, ELEMENT_TYPES.TRIANGLE, ELEMENT_TYPES.STAR].includes(e.type)

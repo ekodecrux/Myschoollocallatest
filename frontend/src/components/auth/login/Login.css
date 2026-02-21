@@ -198,3 +198,117 @@ label {
   } 
 }
 
+
+/* Fix Sign In text overlapping logo - Issue 6 */
+.loginNav {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  padding-top: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #DDDDDD;
+  position: relative;
+  min-height: 50px;
+}
+
+/* Ensure logo doesn't overlap with buttons */
+.loginNewLogoContainer {
+  position: absolute;
+  display: flex;
+  flex: 1;
+  width: auto;
+  justify-content: flex-start;
+  left: 15px;
+  z-index: 1;
+}
+
+/* Button container properly centered */
+.loginBtnContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  z-index: 2;
+}
+
+/* Fix Back button overlapping text - Issue 7 */
+.loginHeading {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  user-select: none;
+  padding: 10px 40px;
+  min-height: 40px;
+}
+
+.loginHeading > div[style*="position: absolute"] {
+  left: 0 !important;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.loginHeading > div[style*="position: absolute"]:hover {
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Ensure Sign In/Register buttons don't overlap */
+.loginTabBtn {
+  border-radius: 8px 8px 0px 0px !important;
+  box-shadow: unset !important;
+  font-size: 14px !important;
+  color: white !important;
+  font-weight: 400 !important;
+  min-width: 80px !important;
+  padding: 8px 16px !important;
+}
+
+/* Fix hover effect for Sign In tab button */
+.loginTabBtn:hover {
+  background-color: #7BA6FB !important;
+  box-shadow: unset !important;
+  border-radius: 8px 8px 0px 0px !important;
+}
+
+/* Register button text hover */
+.loginBtnContainer .MuiButton-text:hover {
+  color: #1976d2 !important;
+  background-color: rgba(25, 118, 210, 0.08) !important;
+}
+
+/* Fix for close icon positioning */
+.loginParentCard .MuiCard-root {
+  position: relative;
+}
+
+/* Medium screen adjustments */
+@media screen and (min-width: 720px) and (max-width: 930px) {
+  .loginMySchoolLogo {
+    display: none;
+  }
+  
+  .loginNewLogoContainer {
+    display: none;
+  }
+}
+
+/* Small screen adjustments */
+@media screen and (min-width: 320px) and (max-width: 520px) {
+  .loginNav {
+    padding-top: 12px;
+    padding-bottom: 8px;
+  }
+  
+  .loginHeading {
+    padding: 8px 30px;
+  }
+  
+  .loginNewLogoContainer {
+    display: none;
+  }
+}

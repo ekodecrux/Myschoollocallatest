@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Box, Typography, Button, Paper, Dialog, DialogTitle, DialogContent, IconButton } from '@mui/material';
+import { Box, Typography, Button, Paper, Dialog, DialogContent, IconButton } from '@mui/material';
 import LockIcon from '@mui/icons-material/Lock';
 import CloseIcon from '@mui/icons-material/Close';
 import { Login } from '../auth/login/Login';
@@ -46,7 +46,13 @@ const ProtectedMakerRoute = ({ children }) => {
               variant="contained"
               size="large"
               onClick={() => setShowLoginDialog(true)}
-              sx={{ mr: 2 }}
+              sx={{ 
+                mr: 2,
+                '&:hover': {
+                  backgroundColor: '#1565c0',
+                  color: '#ffffff'
+                }
+              }}
             >
               Sign In
             </Button>
@@ -54,31 +60,47 @@ const ProtectedMakerRoute = ({ children }) => {
               variant="outlined"
               size="large"
               onClick={() => navigate(-1)}
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'rgba(25, 118, 210, 0.08)',
+                  borderColor: '#1976d2'
+                }
+              }}
             >
               Go Back
             </Button>
           </Paper>
         </Box>
         
-        {/* Login Dialog */}
+        {/* Login Dialog - No duplicate header */}
         <Dialog 
           open={showLoginDialog} 
           onClose={() => setShowLoginDialog(false)}
           maxWidth="sm"
           fullWidth
+          PaperProps={{
+            sx: { position: 'relative' }
+          }}
         >
-          <DialogTitle sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-            Sign In
-            <IconButton onClick={() => setShowLoginDialog(false)}>
-              <CloseIcon />
-            </IconButton>
-          </DialogTitle>
-          <DialogContent>
+          <IconButton 
+            onClick={() => setShowLoginDialog(false)}
+            sx={{ 
+              position: 'absolute', 
+              right: 8, 
+              top: 8, 
+              zIndex: 10,
+              backgroundColor: 'rgba(255,255,255,0.9)',
+              '&:hover': {
+                backgroundColor: 'rgba(255,255,255,1)'
+              }
+            }}
+          >
+            <CloseIcon />
+          </IconButton>
+          <DialogContent sx={{ p: 0 }}>
             <Login handleCloseModal={() => {
               setShowLoginDialog(false);
-              // Small delay to allow Redux state to update before route check
               setTimeout(() => {
-                // Force re-render by navigating to the same page
                 navigate(location.pathname, { replace: true });
               }, 100);
             }} />

@@ -156,3 +156,154 @@ html body {
   }
 }
 
+
+/* Reject button hover - Issue 17 */
+.MuiButton-containedError:hover,
+.MuiButton-outlinedError:hover {
+    background-color: rgba(211, 47, 47, 0.85) !important;
+}
+
+/* Pay button hover - Issue 21 */
+.MuiButton-containedSuccess:hover,
+.MuiButton-containedPrimary:hover {
+    opacity: 0.9 !important;
+}
+
+/* Generic text button hover improvement */
+.MuiButton-text:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Generic outlined button hover improvement */
+.MuiButton-outlined:hover {
+    background-color: rgba(25, 118, 210, 0.04) !important;
+}
+
+/* Generic contained button hover improvement */
+.MuiButton-contained:hover {
+    opacity: 0.92 !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.15) !important;
+}
+
+.MuiFormControl-root .MuiInputLabel-root {
+    background-color: white;
+    padding: 0 4px;
+}
+
+.MuiFormControl-root .MuiInputLabel-shrink {
+    transform: translate(14px, -9px) scale(0.75) !important;
+}
+
+/* Ensure proper spacing in login forms */
+.loginParentCard .MuiCard-root {
+    overflow: visible;
+}
+
+/* ===== COMPREHENSIVE UI FIXES ===== */
+
+/* Issue 16: Filter by School text overlap fix */
+.MuiFormControl-root .MuiInputLabel-root {
+    background-color: white !important;
+    padding: 0 6px !important;
+    margin-left: -4px !important;
+}
+
+.MuiFormControl-root .MuiInputLabel-shrink {
+    transform: translate(14px, -9px) scale(0.75) !important;
+}
+
+/* Issue 17: Bulk upload button fix - prevent blank/black state */
+.MuiButton-root:disabled {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+    color: rgba(0, 0, 0, 0.26) !important;
+}
+
+.MuiButton-contained:disabled {
+    background-color: rgba(0, 0, 0, 0.12) !important;
+    color: rgba(0, 0, 0, 0.26) !important;
+}
+
+/* Upload button specific fix */
+input[type="file"] + .MuiButton-root,
+.MuiButton-root[component="label"] {
+    background-color: #1976d2 !important;
+    color: white !important;
+}
+
+input[type="file"] + .MuiButton-root:hover,
+.MuiButton-root[component="label"]:hover {
+    background-color: #1565c0 !important;
+}
+
+/* Issue 11: Subscription layout fix */
+.subscriptionContainer .textContainer {
+    margin-top: 40px !important;
+    padding: 20px !important;
+}
+
+/* Issue 12: Pay button hover */
+.subscriptionContainer .MuiButton-contained {
+    transition: all 0.2s ease !important;
+}
+
+.subscriptionContainer .MuiButton-contained:hover {
+    background-color: #1565c0 !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+}
+
+/* Issue 1 & 2: Sign In button hover on Makers page */
+.MuiButton-contained.MuiButton-sizeLarge:hover {
+    background-color: #1565c0 !important;
+    color: white !important;
+}
+
+.MuiButton-outlined.MuiButton-sizeLarge:hover {
+    background-color: rgba(25, 118, 210, 0.08) !important;
+    border-color: #1976d2 !important;
+}
+
+/* Reject button hover */
+.MuiButton-containedError:hover {
+    background-color: #c62828 !important;
+}
+
+/* Approve button hover */
+.MuiButton-containedSuccess:hover {
+    background-color: #1b5e20 !important;
+}
+
+/* All text buttons hover */
+.MuiButton-text:hover {
+    background-color: rgba(25, 118, 210, 0.08) !important;
+}
+
+/* All outlined buttons hover */
+.MuiButton-outlined:hover {
+    background-color: rgba(25, 118, 210, 0.04) !important;
+    border-color: #1976d2 !important;
+}
+
+/* IconButton hover */
+.MuiIconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Chip hover */
+.MuiChip-root:hover {
+    background-color: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* Tab hover */
+.MuiTab-root:hover {
+    background-color: rgba(25, 118, 210, 0.08) !important;
+}
+
+/* Card hover */
+.MuiCard-root:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
+}
+
+/* TextField focus */
+.MuiOutlinedInput-root:hover .MuiOutlinedInput-notchedOutline {
+    border-color: #1976d2 !important;
+}

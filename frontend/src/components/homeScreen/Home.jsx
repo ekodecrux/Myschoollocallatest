@@ -116,7 +116,7 @@ export default function Home() {
         <div className="homeHeader">
           <div className="homeGutter"></div>
           <div className="homeHeaderBtnContainer">
-            <Button variant="text" className="buttonDownloadApp">
+            <Button variant="text" className="buttonDownloadApp" onClick={() => window.open('https://play.google.com/store/apps/details?id=com.myschool.app', '_blank')}>
               Download App
             </Button>
             {!isLoggedin && (

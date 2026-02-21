@@ -284,7 +284,7 @@ const AcademicFilter = ({ loadImages }) => {
             )}
             
             {/* Blue Pane - Contains book types and lessons only */}
-            {!isCollapsed && (
+            {!isCollapsed && (selectedSubject && bookTypes.length > 0) && (
                 <div className="academicBluePane">
                     {/* Book Type Tabs - Show when subject is selected */}
                     {selectedSubject && bookTypes.length > 0 && (
@@ -326,7 +326,7 @@ const AcademicFilter = ({ loadImages }) => {
                     )}
                     
                     {/* Show message when no filters to display - but only for CLASS pages, not Image Bank or Sections */}
-                    {!selectedSubject && !location.pathname.toLowerCase().includes('imagebank') && !location.pathname.toLowerCase().includes('sections') && !location.pathname.toLowerCase().includes('one-click') && (
+                    {false && !selectedSubject && subjects.length > 0 && !location.pathname.toLowerCase().includes('imagebank') && !location.pathname.toLowerCase().includes('sections') && !location.pathname.toLowerCase().includes('one-click') && !location.pathname.toLowerCase().includes('grade') && (
                         <div className="filterHint">
                             Select a subject from the menu above to see more filters
                         </div>

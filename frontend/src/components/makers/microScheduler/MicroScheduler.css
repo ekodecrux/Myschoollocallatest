@@ -11,8 +11,83 @@
     display: none !important;
   }
   
-  /* Hide navigation buttons and Copy to Next Week in print */
   .hide-on-export {
     display: none !important;
   }
+}
+
+/* ===== CONSISTENT BUTTON HOVER BEHAVIOR ===== */
+/* All buttons should have BLACK text on hover like Month/Year */
+
+/* Week/Month/Year Toggle Buttons */
+.micro-scheduler-container .MuiToggleButton-root {
+    transition: all 0.2s ease !important;
+    color: #000000 !important;
+}
+
+.micro-scheduler-container .MuiToggleButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #000000 !important;
+}
+
+.micro-scheduler-container .MuiToggleButton-root.Mui-selected {
+    background-color: #000000 !important;
+    color: #ffffff !important;
+}
+
+.micro-scheduler-container .MuiToggleButton-root.Mui-selected:hover {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+}
+
+/* Save, Export, Print - Outlined Buttons */
+.micro-scheduler-container .MuiButton-outlined {
+    transition: all 0.2s ease !important;
+    color: #1976d2 !important;
+    border-color: #1976d2 !important;
+}
+
+.micro-scheduler-container .MuiButton-outlined:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #000000 !important;
+    border-color: #000000 !important;
+}
+
+.micro-scheduler-container .MuiButton-outlined .MuiSvgIcon-root {
+    transition: all 0.2s ease !important;
+}
+
+.micro-scheduler-container .MuiButton-outlined:hover .MuiSvgIcon-root {
+    color: #000000 !important;
+}
+
+/* Text Buttons */
+.micro-scheduler-container .MuiButton-text {
+    transition: all 0.2s ease !important;
+}
+
+.micro-scheduler-container .MuiButton-text:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+    color: #000000 !important;
+}
+
+/* Contained Buttons */
+.micro-scheduler-container .MuiButton-contained:hover {
+    opacity: 0.9 !important;
+}
+
+/* IconButton hover */
+.micro-scheduler-container .MuiIconButton-root:hover {
+    background-color: rgba(0, 0, 0, 0.04) !important;
+}
+
+/* Calendar cell hover for subjects */
+.micro-scheduler-container [data-subject] {
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease !important;
+}
+
+.micro-scheduler-container [data-subject]:hover {
+    transform: scale(1.02);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
