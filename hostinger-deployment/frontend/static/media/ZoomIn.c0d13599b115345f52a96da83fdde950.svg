@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="21.419" height="21.418" viewBox="0 0 21.419 21.418">
+  <g id="ZoomIn" transform="translate(-2846.829 -332)">
+    <path id="Path_1" data-name="Path 1" d="M113.414,35a8.414,8.414,0,1,0,8.414,8.414A8.418,8.418,0,0,0,113.414,35Zm0,1.53a6.884,6.884,0,1,1-6.884,6.884A6.888,6.888,0,0,1,113.414,36.53Z" transform="translate(2741.829 297)" fillRule="evenodd"/>
+    <path id="Path_2" data-name="Path 2" d="M455.268,386.314l4.59,4.59a.765.765,0,1,0,1.082-1.082l-4.59-4.59a.765.765,0,0,0-1.082,1.082Z" transform="translate(2407.085 -37.709)" fillRule="evenodd"/>
+    <path id="Path_3" data-name="Path 3" d="M193.265,211.53h7.649a.765.765,0,1,0,0-1.53h-7.649a.765.765,0,0,0,0,1.53Z" transform="translate(2658.154 129.649)" fillRule="evenodd"/>
+    <path id="Path_4" data-name="Path 4" d="M280,123.265v7.649a.765.765,0,0,0,1.53,0v-7.649a.765.765,0,1,0-1.53,0Z" transform="translate(2574.479 213.325)" fillRule="evenodd"/>
+  </g>
+</svg>

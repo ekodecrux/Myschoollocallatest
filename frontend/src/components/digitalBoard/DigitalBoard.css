@@ -1,0 +1,134 @@
+.digital-board-wrapper {
+  position: relative;
+  width: 100%;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 64px);
+  background: #e8e8e8;
+  overflow: visible;
+}
+
+.db-top-toolbar {
+  position: relative;
+  margin: 10px auto;
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: #fff;
+  border-radius: 8px;
+  z-index: 100;
+  gap: 4px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  width: fit-content;
+  max-width: calc(100% - 20px);
+  flex-wrap: wrap;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.db-left-toolbar {
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 6px;
+  background: #fff;
+  border-radius: 8px;
+  z-index: 1000;
+  gap: 2px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.db-right-toolbar {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 10px;
+  background: #fff;
+  border-radius: 8px;
+  z-index: 1000;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.db-canvas-area {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  right: 60px;
+  bottom: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: auto;
+}
+
+.db-canvas-area canvas {
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.db-lesson-panel {
+  position: absolute;
+  top: 10px;
+  right: 70px;
+  width: 250px;
+  max-height: 300px;
+  padding: 12px;
+  background: #fff;
+  border-radius: 8px;
+  z-index: 999;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.digital-board-wrapper:fullscreen {
+  background: #2a2a2a;
+  height: 100vh;
+}
+
+.digital-board-wrapper:fullscreen .db-canvas-area {
+  top: 70px;
+  left: 70px;
+  right: 70px;
+  bottom: 20px;
+}
+
+@media (max-width: 900px) {
+  .db-top-toolbar {
+    flex-wrap: wrap;
+    max-width: 95%;
+    padding: 4px 8px;
+  }
+  .db-left-toolbar { left: 4px; padding: 6px 4px; }
+  .db-right-toolbar { right: 4px; padding: 8px 6px; }
+  .db-canvas-area { left: 50px; right: 50px; }
+  .db-lesson-panel { width: 200px; right: 60px; }
+}
+
+@media (max-width: 600px) {
+  .db-left-toolbar {
+    position: absolute;
+    left: 50%;
+    top: auto;
+    bottom: 8px;
+    transform: translateX(-50%);
+    flex-direction: row;
+    overflow-x: auto;
+    max-width: 95%;
+  }
+  .db-right-toolbar { display: none; }
+  .db-canvas-area { left: 10px; right: 10px; bottom: 70px; }
+  .db-lesson-panel { top: auto; bottom: 80px; right: 10px; left: 10px; width: auto; }
+}
+
+.db-left-toolbar .MuiIconButton-root:hover { background: rgba(25, 118, 210, 0.08); }
+.db-left-toolbar .MuiIconButton-colorPrimary { background: rgba(25, 118, 210, 0.12); }

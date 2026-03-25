@@ -1,0 +1,22 @@
+
+.sideNavLinkActive {
+    color: #0231CC !important;
+}
+
+.sideNavLinkActive > div {
+    background-color: #ECF3FF !important;
+    border-left: 4px solid;
+}
+.sideNaveBarCrossIconContainer{
+    padding-top: 10px;
+}
+.mobileSidenavLogo{
+    margin-top: -50px;
+     margin-left: 12px;
+   
+     display: flex; 
+}
+.sideNvaIcon{
+    display: flex;
+     flex: 0.9;
+}

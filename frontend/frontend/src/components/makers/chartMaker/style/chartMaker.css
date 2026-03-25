@@ -1,0 +1,48 @@
+@media screen and (min-width: 501px) {
+    .polotno-side-tabs-container {
+        min-width: 90px !important;
+    }
+
+    .polotno-side-panel-tab {
+        min-height: 90px !important;
+        font-size: 16px !important;
+    }
+
+    .polotno-side-panel-tab > div > svg {
+        width: 26px !important;
+        height: 26px !important;
+    }
+    .polotno-side-panel-tab > div > span > svg {
+        width: 26px !important;
+        height: 26px !important;
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 500px) {
+    .polotno-side-panel-tab > div > svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .polotno-side-panel-tab > div > span > svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .bp4-icon > svg {
+        display: inline-block;
+    }
+
+    .polotno-side-tabs-container {
+        min-height: 60px !important;
+        overflow-x: auto !important;
+    }
+
+    .polotno-side-tabs-container::-webkit-scrollbar {
+        display: none;
+    }
+
+    .go242266285 {
+        height: 62vh !important;
+    }
+}

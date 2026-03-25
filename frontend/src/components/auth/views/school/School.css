@@ -1,0 +1,67 @@
+.typoContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.schoolBtnContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.imgBtnContainer {
+    display: flex;
+    flex-direction: row;
+    flex: 0.5;
+    gap: 10px;
+}
+
+.btnCombo {
+    display: flex;
+    flex-direction: row;
+    flex: 0.6;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-end;
+    padding-left: 15px;
+}
+
+.schoolContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin: 94px 24px 24px;
+    gap: 20px;
+}
+
+@media screen and (min-width:320px) and (max-width: 520px) {
+    .css-18jpug0-MuiDrawer-docked .MuiDrawer-paper {
+        display: none;
+    }
+
+    .schoolContainer {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
+        margin: 10px;
+        padding-top: 131px;
+    }
+
+    .schoolBtnContainer {
+        display: block;
+    }
+
+    .btnCombo {
+        padding-top: 12px;
+        padding-left: 0px;
+        justify-content: center;
+        gap: 34px;
+    }
+
+    .MuiDataGrid-cell--textLeft>div {
+        display: grid !important;
+    }
+}

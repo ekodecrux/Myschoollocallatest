@@ -1,0 +1,15 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 194 194" width="48" height="48">
+	<title>maker logo-ai</title>
+	<style>
+		.s0 { fill: #7f8183 } 
+		.s1 { fill: none;stroke: #fefefe;stroke-linecap: round;stroke-linejoin: round;stroke-width: 6 } 
+		.s2 { fill: none;stroke: #fefefe;stroke-width: 6 } 
+	</style>
+	<g id="Layer 1">
+		<path id="&lt;Path&gt;" class="s0" d="m0.4 97c0-53 43.3-96.3 96.3-96.3 53 0 96.3 43.3 96.3 96.3 0 53-43.3 96.3-96.3 96.3-53 0-96.3-43.3-96.3-96.3z"/>
+		<path id="&lt;Path&gt;" class="s1" d="m61.9 124.3v-58.3l35 60.6 34.6-60v59.7"/>
+		<path id="&lt;Path&gt;" class="s1" d="m67.7 74.9c0-3.6 6.6-6.5 14.7-6.5 8.1 0 14.7 2.9 14.7 6.5"/>
+		<path id="&lt;Path&gt;" class="s1" d="m97.1 74.9c0-3.6 6.6-6.5 14.7-6.5 8.1 0 14.7 2.9 14.7 6.5"/>
+		<path id="&lt;Path&gt;" class="s2" d="m81.7 100.1h30.4"/>
+	</g>
+</svg>

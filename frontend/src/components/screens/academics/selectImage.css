@@ -1,0 +1,94 @@
+.hide {
+  display: none;
+}
+
+.myDiv:hover .hide>h5 {
+  display: block;
+  color: red;
+}
+
+.selectedImageContainer {
+  background-color: skyblue;
+  min-width: 60px;
+  padding: 5px;
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  border-radius: 20px 0px 0px 20px;
+}
+
+.selectImageHeaderContainer {
+  display: flex;
+  flex-direction: column;
+  flex: 0.1;
+  padding: 0px 20px;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+.txtContainer {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.showSelectedImageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  height: 80vh;
+  overflow: auto;
+  flex: 0.82;
+  gap: 20px;
+  padding: 20px;
+}
+
+.emptyImageContainer {
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 0.82;
+}
+
+.bottomButtonContainer {
+  flex: 0.08;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #DDDDDD;
+}
+
+.btnLinearGrad-1 {
+  background: transparent linear-gradient(180deg, #C9DBFF 0%, #7DA8FF 100%) 0% 0% no-repeat padding-box;
+  color: black !important;
+}
+
+.iconsContainer {
+  flex: 0.15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #DDDDDD;
+  border-radius: 20px;
+  padding: 4px;
+}
+
+.overlaysFavIconContainer {
+  position: absolute;
+  right: 0;
+}
+
+.selectedImageSubContainer {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  height: max-content;
+  position: relative
+}
+
+.overlaysActionBtn {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}

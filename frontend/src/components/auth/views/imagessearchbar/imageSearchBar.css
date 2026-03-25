@@ -1,0 +1,19 @@
+.imageSearchBarContainer{
+    display:flex;
+    flex-direction:row;
+    flex:1;
+    gap:10px;
+    align-items:center;
+    justify-content:space-evenly;
+    flex-wrap:wrap;
+     padding-top: 15px; 
+     padding-left: 35px;
+    padding-right: 30px;
+}
+.imageSearchbarPagignationContainer{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:flex-end;
+    
+}

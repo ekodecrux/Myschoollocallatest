@@ -1,0 +1,90 @@
+.mobileViewLanguageContainer {
+    display: flex !important;
+    flex: 1 1 !important;
+    align-items: center !important;
+    background: #D71275 0% 0% no-repeat padding-box !important;
+    opacity: 1 !important;
+}
+
+.languageContainer {
+    display: flex;
+    flex: 1.9;
+    align-items: center;
+    padding: 5px 25px;
+}
+
+.languageIcon {
+    /* margin-left: 24px; */
+    color: #D71275;
+    background-color: white;
+    padding: 5px 12px;
+    border-radius: 22px;
+}
+
+.mobileNavigation {
+    display: flex;
+    flex: 1;
+    gap: 15px;
+    padding-top: 20px;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.buttonContainer {
+    display: none;
+}
+
+.mobileMenuLogo {
+    display: flex;
+    padding: 10px 15px;
+}
+
+.mobileMySchoolLogo {
+    display: flex;
+    flex: 1;
+}
+
+.crossIcon {
+    padding-top: 10px;
+}
+
+.tabsContainer > div > div:nth-child(1) {
+    gap: 12px !important ;
+}
+
+.tabsContainer > div {
+    overflow-x: scroll !important;
+}
+
+.tabsContainer > div::-webkit-scrollbar {
+    display: none;
+}
+
+.mobileMenuPathContainer {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    padding: 15px;
+    border-bottom: 1px solid #727272;
+}
+
+.mobileMegaMenuContainer {
+    /* display: flex; */
+    flex: 0.6;
+}
+
+
+@media screen and (min-width: 320px) and (max-width: 380px) {
+    .mobileNavigation {
+        display: flex;
+        flex: 1;
+        gap: 2%;
+        padding: 3%;
+        align-items: flex-start;
+        justify-content: center;
+    }
+    .navbarLogo{
+        max-width: 177px;
+        max-height: 40px !important;
+    }
+}

@@ -1,0 +1,261 @@
+.menus {
+   display: flex; 
+ 
+  flex: 1;
+  flex-direction: row;
+  list-style-type: none;
+  margin: 0;
+  color: white;
+  padding: 0;
+  align-items: center;
+}
+.languageButtonIcon{
+  padding: 3px 8px !important;
+}
+/* .languageButtonIcon{
+  padding:5px !important;
+} */
+
+.menu-items {
+  color: white;
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.navbarMenu,
+nav {
+   display: flex; 
+   /* width:100%;  */
+}
+
+.navbarMenuActive {
+  /* border: 1px solid #DDDDDD !important; */
+  border-radius: 8px 8px 0px 0px !important;
+  background-color: black !important;
+}
+
+.selectedActive {
+  background-color: #FFFFFF !important;
+  border-radius: 0px 0px 0px 0px !important;
+  color: #7BA6FB !important;
+}
+
+
+.navbarMenuDiv {
+  display: flex;
+  flex: 1;
+  max-height: 36.5px;
+  min-height: 42px;
+  background-color: #494949;
+}
+
+.navbarMenuPaper {
+  background: transparent linear-gradient(180deg, #000000 0%, #00000080 100%) 0% 0% no-repeat padding-box !important;
+  color: #FFFFFF !important;
+  font-size: 16px;
+  font-weight: 300;
+  max-height: 70vh !important;
+  opacity: 1 !important;
+  margin-top: 0px !important;
+  border-radius: 0px 10px 10px 10px !important;
+  min-width: 220px !important;
+  overflow-y: hidden;
+  font-family: Roboto !important;
+  padding-bottom: 20px;
+}
+
+/* .navbarMenuLink, .navbarMenuLink>a>li, a, a>li {
+  font-family: 'Calibri Light' !important;
+} */
+
+.navbarMenuItem:hover {
+  background-color: #000000 !important;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+.navbarMenuPaper {
+  scrollbar-width: auto;
+  scrollbar-color: #3a3838 #eeeeee;
+}
+
+/* Chrome, Edge, and Safari */
+.navbarMenuPaper::-webkit-scrollbar {
+  width: 0px;
+}
+
+.navbarMenuPaper::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.navbarMenuPaper::-webkit-scrollbar-thumb {
+  background-color: #3a3838;
+  border-radius: 10px;
+  border: 2px solid #eeeeee;
+  
+  /* font-weight: bolder; */
+}
+
+.mobNavbarMenu {
+  display: flex;
+  flex: 1;
+  align-items: center;
+}
+
+.css-fhizj0-MuiButtonBase-root-MuiButton-root:hover {
+  /* background-color: black !important; */
+  min-height: 42px !important;
+  font-style: bold ! important;
+}
+
+.languageMainContainer {
+  display: flex;
+  align-items: center;
+  flex: 0.03;
+}
+
+.languageButton {
+  color: #FFFFFF;
+  background-color: #d71275;
+  padding: 5px 12px !important;
+  border-radius: 22px;
+  /* font-weight: bold; */
+}
+
+
+.navLanguageOptions {
+  flex: 0.5;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+   gap: 5px; 
+  font-size: smaller;
+  font-family: "Roboto", "sans-serif" !important;
+
+}
+
+.navLanguageRender {
+  display: flex !important;
+  flex-direction: column;
+  align-items: flex-start !important;
+  gap: 14px;
+  width:100%
+}
+
+.navLanguageTypo {
+  color: white;
+
+}
+
+.navLanguageHeading {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  padding-right: 15px;
+}
+
+.navbarHomeGutter {
+  flex: 0.2;
+  max-width: 130px;
+  min-width: 120px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.navbarHomeGutterOpened {
+  flex: 0.4;
+  max-width: 230px;
+  min-width: 120px;
+  padding-left: 80.45px;
+  display: flex;
+  align-items: center;
+  
+  /* justify-content: flex-end; */
+}
+
+.navbarHomeGutterOpened .languageMainContainer {
+  background-color:rgb(215 18 117);
+  border-radius : 8px 8px 0 0;
+  flex: 1;
+  height: 100%;
+ 
+}
+
+* .languageMenu::-webkit-scrollbar {
+  /* width: 5px; */
+  display:none;
+}
+ .languageMenu{
+  min-width: 220px !important;
+ }
+
+ /* .navLanguageRender > p{
+ font-family: 'Roboto' !important;
+}  */
+
+@media screen and (min-width: 320px) and (max-width:520px) {
+
+  .navbarMenu,
+  nav {
+    /* Desktop nav is now hidden by React component logic based on viewport */
+    width: 100%;
+  }
+
+  .hamburgerIcon {
+    padding-top: 4px;
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  .mobNavbarMenu {
+    position: relative;
+    z-index: 1000;
+    display: flex;
+  }
+
+  .mobileMenubarNav {
+    border-right: 1px solid #707070;
+  }
+  
+  .menus{
+    flex-direction: column;
+    align-items: flex-start;
+    width: 90vw;  
+  }
+
+  /* Ensure navigation buttons are properly sized for touch on mobile */
+  .navbarMenuDiv button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+}
+
+@media screen and (min-width: 720px) and (max-width:1280px) {
+  .languageButtonIcon{
+    padding: 9px 3px;
+  }
+  .languageButtonIcon > p{
+    font-size: 15px;
+  }
+
+}
+
+@media screen and (min-width: 1280px) and (max-width:1420px) {
+  .languageButton{
+    padding: 4px 11px !important;
+  }
+
+}
+

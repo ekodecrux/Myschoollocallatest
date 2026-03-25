@@ -1,0 +1,9 @@
+.story-maker {
+  font-family: 'Roboto', sans-serif;
+}
+
+@media print {
+  .story-maker .MuiPaper-root:first-child {
+    display: none !important;
+  }
+}

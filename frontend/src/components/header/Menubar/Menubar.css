@@ -1,0 +1,103 @@
+.menuBarContainer {
+  display: flex;
+  flex: 1;
+  /* border-bottom: 1px solid #DDDDDD; */
+  max-height: 81px;
+}
+
+.menubarNav {
+  flex: 1;
+  /* align-items: center; */
+  align-items: flex-start;
+  gap: 12px;
+  padding-top: 9px;
+}
+
+.menubarItems {
+  display: flex;
+  flex: 1;
+  margin: 5px;
+  padding: 0;
+  list-style: none;
+  gap: 12px;
+  height: 100%;
+  align-items: flex-end;
+  padding-left: 12px;
+}
+
+.menubarLink {
+  font-size: 18px !important;
+  font-family: Futura Md BT,sans-serif !important;
+  font-weight: 300 !important;
+  padding: 12px 9px 24px ;
+  color: #707070 !important;
+  max-height: 52px !important;
+  align-self: end !important;
+  width: max-content;
+}
+
+.menubarSearchField>div {
+  border-radius: 50px;
+  border: 1px solid #DDDDDD;
+  padding: 3px 12px 3px 4px;
+}
+
+.menubarSearch {
+  padding-bottom: 9px;
+}
+
+.menubarItemsSelected {
+ 
+  color: #7BA6FB !important;
+    border-radius: 6px 6px 6px 6px!important;
+    background-color: #FFFFFF !important;
+    /* box-shadow: 0px 0px 12px #00000038; */
+    /* margin-bottom: -9px !important; */
+    padding-top: 25px !important;
+    padding-bottom: 12px !important;
+    padding-bottom: 15px !important;
+}
+
+.avatarMenubarPosition {
+  position: absolute;
+  top: 119px;
+  right: 24px;
+}
+
+
+a>li {
+  color: #FFFFFF !important;
+  font-family: 'Proxima Nova' !important;
+  font-size: 16px !important;
+}
+
+.menubarHomeGutter{
+  flex:0.2;
+  max-width: 5vw;
+  /* min-width: 130px; */
+}
+@media screen and (min-width: 320px) and (max-width: 520px) {
+  .menubarNav {
+    flex: 5;
+    align-items: center;
+    gap: 0px;
+  }
+  .avatarMenubarPosition {
+    margin-top: -16px;
+  }
+  .menubarLink {
+    width: 100%;
+    border-radius: 0px !important;
+    justify-content: flex-start !important;
+    padding-left: 24px !important;
+    padding-top: 11px !important;
+    padding-bottom:  11px !important;
+    max-height: unset !important;
+    color: #FFFFFF !important;
+  }
+
+  .menubarItemsSelected {
+    background-color: #6C92DE !important;
+  }
+}
+

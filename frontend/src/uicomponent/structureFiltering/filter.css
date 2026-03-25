@@ -1,0 +1,66 @@
+.structureFilterContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 30px;
+    flex: 1;
+    /* height: 70px; */
+    align-self: center;
+    padding-top: 24px;
+    padding-bottom: 32px;
+    width: 100% ;
+    /* border:2px solid; */
+}
+
+.structureFilterSelector {
+    /* display: flex; */
+    justify-content: center;
+    align-items: center;
+    /* padding: 0px 100px; */
+    height: 56px;
+    /* background-color: #DDD9C3; */
+    width: 99vw;
+}
+
+.structureFilterItem {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 16px;
+    border: 1px solid #DDDDDD;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.structureFilterItemActive {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 16px;
+    border: 2px solid #50D299;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.structureFilterItemAll {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 14px 16px;
+    border: 2px solid #1976d2;
+    background-color: #e3f2fd;
+    border-radius: 8px;
+    opacity: 1;
+    cursor: pointer;
+    font-weight: bold;
+    color: #1565c0;
+}

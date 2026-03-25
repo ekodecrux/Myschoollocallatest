@@ -1,0 +1,508 @@
+.homeContainer {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+}
+
+.homeHeader {
+    display: flex;
+    flex: 0.1;
+    min-height: 90px;
+}
+
+.homeContextArea {
+    display: flex;
+    flex: 0.8;
+    min-height: 100vh
+}
+
+.homeFooter {
+    display: flex;
+    flex: 0.1;
+
+}
+
+.homeGutter {
+    flex: 0.1;
+    max-width: 80px;
+}
+
+.homeHeaderBtnContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+}
+
+.textShadow {
+    text-shadow: rgb(0 0 0 / 44%) 3px 4px 0px;
+}
+
+.homeCtxAreaWrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.homeFooterContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 40px;
+    font-size: small;
+    color: darkgray;
+}
+
+.homeLogo {
+
+    flex: 0.3;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.homeSearch {
+    flex: 0.2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0px;
+}
+
+.homeNavigation {
+    flex: 0.5;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+    font-size: smaller;
+    user-select: none;
+
+}
+
+.homeNavigationLink {
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+    min-width: 101px;
+}
+
+.homeNavigationLink>img {
+    max-width: 60px;
+}
+
+a {
+    text-decoration: unset !important;
+}
+
+.homeSearchBar {
+    max-width: 40vw;
+}
+
+.homeSearchBar>div {
+    border-radius: 50px;
+    border: 1px solid #DDDDDD;
+}
+
+
+.homeSearchIcon {
+    transform: rotateY(180deg);
+    padding: 0px 24px 0px 16px;
+}
+
+.indiaFlag {
+    background-image: url("../../assests/indiaFlag.png");
+    background-repeat: no-repeat;
+    background-position: top right;
+    max-width: 120px;
+    background-size: contain;
+}
+
+.row {
+    flex-direction: row !important;
+}
+
+.avatarPosition {
+    position: absolute;
+    top: 10px;
+    right: 80px;
+}
+
+a>p {
+    font-family: 'Proxima Nova';
+    font-size: 18px;
+    color: #3D3D3D;
+    font-weight: 400;
+    font-family: Futura Md BT,sans-serif;
+}
+
+
+.homeCategoryContainer {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    background-color: #EEECE0;
+    padding: 80px;
+    gap: 90px;
+    flex-direction: column;
+    align-items: center;
+   
+}
+
+.homeCategoryWrapper {
+    margin-top: 90px;
+     display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10%;  
+    max-width: 70vw;
+      row-gap: 6.25vw;
+    column-gap: 8.25vw; 
+  
+
+}
+
+.homeBannerContainer {
+    display: flex;
+    padding: 80px;
+    align-items: flex-end;
+}
+
+.mobGutter {
+    flex: 0.1;
+    max-width: 28px;
+}
+
+.openModal {
+    flex-direction: row-reverse;
+    gap: 15px;
+}
+
+.govImageMainContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #048EE3;
+    flex: 1;
+    /* min-height: 100vh; */
+    padding-bottom: 6.25vw;
+    /* gap: 20px;  */
+}
+
+.homeTextStroke {
+    text-shadow: -6px -6px 0 #fff, 0 -6px 0 #fff, 6px -6px 0 #fff, 6px 0 0 #fff, 6px 6px 0 #fff, 0 6px 0 #fff, -6px 6px 0 #fff, -6px 0 0 #fff;
+}
+
+.govImageContainerWrapperTop {
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    /* border-bottom: 6px dotted white; */
+}
+
+.govImageContainerWrapperTopImage {
+    border: 2px;
+    border-style: dotted;
+    color: whitesmoke;
+    flex: 1;
+}
+
+.govImageContainerWrapperBottom {
+    display: flex;
+    flex-direction: row;
+    flex: 1;
+}
+
+.govImageContainerWrapperBottomImage {
+    border: 2px;
+    border-style: dotted;
+    color: whitesmoke;
+}
+
+.homeGovImgWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.govImageCustomLinkContainerTop {
+    flex: 0.2;
+    min-height: 300;
+    display: flex;
+
+    /* border-right: 6px dotted white; */
+}
+
+.govImageCustomLinkContainerBottom {
+    flex: 0.2;
+    min-height: 300;
+    display: flex;
+
+    /* border-right: 6px dotted white; */
+}
+
+.serviceImageContainerMainContainer {
+    background-color: #575656;
+    /* min-height: 100vh; */
+    display: flex;
+    flex-direction: column;
+    /* gap: 30px; */
+    flex: 1;
+    padding-bottom: 80px;
+}
+
+.serviceImageContainerWrapper {
+    display: flex;
+    flex-direction: row !important;
+    flex: 1;
+    /* flex-wrap:wrap;  */
+    /* gap: 30px; */
+    column-gap: 6.25vw;
+    row-gap: 6.25vw;
+    align-items: center;
+    justify-content: center;
+    /* padding-left:25px; */
+}
+
+.customLink {
+    flex: 0.2;
+    min-height: 300;
+    display: flex;
+    /* border-right: 6px dotted white; */
+}
+
+
+
+@media screen and (min-width: 320px) and (max-width:520px) {
+    .headerViewsNavLinkHidden{
+        display:none;
+    }
+    .buttonDownloadApp .buttonSignIn {
+        font-size: 24px !important;
+    }
+
+    .myschoolHomeLogo {
+        max-width: 350px;
+    }
+
+    .homeSearch {
+        flex: 0;
+    }
+
+    .homeSearchBar {
+        max-width: 350px;
+
+    }
+
+    .homeNavigation {
+        max-width: 350px;
+        column-gap: 64px;
+        flex-wrap: wrap;
+
+
+    }
+
+    a>p {
+        font-size: 14px;
+        font-weight: 500;
+         font-family: futura mdibity !important;
+    }
+
+    .homeNavigationLink>img {
+        max-width: 45px;
+    }
+
+    .homeFooterContainer {
+        padding: 30px 0px;
+        gap: 40px;
+    }
+
+    .homeBannerContainer {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    .homeBannerContainerImage {
+        min-width: 100%;
+    }
+
+    .homeCategoryContainer {
+         /* padding: 0px;  */
+        padding-bottom: 80px;
+         display: flex;
+        flex-direction: column; 
+        gap: 50px;
+        align-items: center;
+        padding: 50px;
+    }
+
+    .homeCategoryWrapper {
+       
+        display: grid;
+        grid-template-columns: 1fr 1fr !important;
+        column-gap: 25%;
+        /* min-width: 60vw; */
+        place-items: center !important;
+        max-width: 60vw;
+   
+    }
+
+    .homeGutter {
+        flex: 0.2 1;
+    }
+
+    .avatarPosition {
+        right: 34px;
+    }
+
+    .openModal {
+        align-items: flex-end !important;
+
+    }
+
+    .govImageContainerWrapperTop {
+        display: flex;
+        flex: 1 1;
+        flex-direction: column;
+        padding-bottom: 20px;
+        border-bottom: 6px dotted white;
+    }
+
+    .govImageContainerWrapperBottom {
+        display: flex;
+        flex-direction: column;
+        flex: 1 1;
+    }
+
+    .homesecondArrayText {
+        padding-top: 25px;
+    }
+
+    .govImageContainerWrapperBottomImage {
+        border-style: none;
+    }
+
+    .govImageContainerWrapperTop {
+
+        border-style: none;
+    }
+
+    .govImageContainerWrapperTopImage {
+
+        border-style: none;
+
+
+    }
+
+    .govImageCustomLinkContainerTop {
+        border-right: none;
+    }
+
+    .govImageCustomLinkContainerBottom {
+        border-right: none;
+    }
+
+    .QucickAcademiHubContainer {
+        padding-top: 20px !important;
+    }
+
+    .serviceImageContainerWrapper {
+        align-items: center;
+        display: flex;
+        flex-wrap: wrap;
+        column-gap: 10vw;
+        row-gap: 10vw;
+    }
+
+    .serViceImageContainerMainContainer>p {
+        font-size: 30px;
+
+    }
+
+
+    .govImageMainContainer>p {
+        font-size: 31px;
+
+    }
+
+    .classWise>p {
+        font-size: 26px;
+    }
+
+    .clickResource>p {
+        font-size: 26px;
+        padding-top: 15px;
+    }
+
+    .homeCtxAreaWrapper {
+        gap: 50px;
+    }
+
+    .govImageMainContainer {
+        min-height: unset;
+    }
+
+    .serviceImageContainerMainContainer {
+        min-height: unset;
+    }
+
+    .serviceImageContainerMainContainer>p {
+        font-size: 31px;
+
+    }
+
+    .link {
+        border-right: unset;
+    }
+
+    .academicHubIcons {
+        width: 45vw;
+        height: calc(7.207*7.81vw)
+    }
+
+    .customLink {
+        border-right: unset;
+        /* border-bottom: 6px dotted white; */
+        /* border-top: 6px dotted white; */
+
+
+    }
+
+
+}
+
+@media screen and (min-width: 720px) and (max-width:1280px){
+    /* .homeCategoryWrapper{
+        column-gap: 9vw;
+    } */
+    a>p {
+       
+        font-size: 17px;
+       
+    }
+}
+/* @media screen and (min-width: 320px) and (max-width:370px) {
+    .clickResource>p{
+        font-size: 21px;
+    }
+    .classWise>p{
+        font-size: 21px;
+    }
+    .govImageMainContainer>p{
+        font-size: 19px;
+    }
+    .serviceImageContainerMainContainer>p{
+        font-size: 21px;
+    }
+
+
+} */

@@ -1,0 +1,240 @@
+.academicFilterContainer {
+    padding: 10px 20px;
+}
+
+/* Breadcrumb - Shows selected filter path */
+.filterBreadcrumb {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 12px;
+    background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.breadcrumbPath {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2px;
+}
+
+.breadcrumbItem {
+    color: #1565c0;
+    font-size: 13px;
+    cursor: pointer;
+    padding: 2px 4px;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.breadcrumbItem:hover {
+    background: rgba(21, 101, 192, 0.1);
+    text-decoration: underline;
+}
+
+.breadcrumbActive {
+    color: #0d47a1;
+    font-weight: 600;
+    font-size: 13px;
+    background: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.breadcrumbSeparator {
+    color: #64b5f6;
+    font-weight: bold;
+    margin: 0 2px;
+}
+
+.collapseToggle {
+    background: #1976d2;
+    color: white;
+    border: none;
+    padding: 4px 10px;
+    border-radius: 4px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.collapseToggle:hover {
+    background: #1565c0;
+}
+
+/* Filter hint message */
+.filterHint {
+    color: rgba(255,255,255,0.7);
+    font-size: 12px;
+    text-align: center;
+    padding: 8px;
+    font-style: italic;
+}
+
+/* Blue Pane - Contains all academic filters */
+.academicBluePane {
+    background: linear-gradient(135deg, #1976d2 0%, #1565c0 100%);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* Subjects Row */
+.subjectsRow {
+    display: flex;
+    align-items: center;
+}
+
+.subjectScrollContainer {
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.subjectChip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 80px;
+    padding: 10px 18px;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.subjectChip:hover {
+    background-color: rgba(255, 255, 255, 0.35);
+    transform: translateY(-2px);
+}
+
+.subjectChip.selected {
+    background-color: white;
+    color: #1976d2;
+    font-weight: 600;
+    border-color: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+/* Book Types Row */
+.bookTypesRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 8px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bookTypeChip {
+    padding: 8px 16px;
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.bookTypeChip:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.bookTypeChip.active {
+    background-color: #ff9800;
+    border-color: #ff9800;
+    color: white;
+    font-weight: 600;
+}
+
+/* Lessons Row */
+.lessonsRow {
+    padding-top: 8px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lessonScrollContainer {
+    overflow-x: auto;
+    scrollbar-width: thin;
+}
+
+.lessonChip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 100px;
+    max-width: 200px;
+    padding: 8px 14px;
+    margin-right: 8px;
+    background-color: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 18px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lessonChip:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+}
+
+.lessonChip.selected {
+    background-color: white;
+    color: #1976d2;
+    font-weight: 600;
+    border-color: white;
+}
+
+/* Loading Indicator */
+.filterLoadingIndicator {
+    text-align: center;
+    padding: 8px;
+    color: #666;
+    font-size: 12px;
+    font-style: italic;
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+    .academicFilterContainer {
+        padding: 8px 10px;
+    }
+    
+    .academicBluePane {
+        padding: 10px;
+        gap: 8px;
+    }
+    
+    .subjectChip {
+        min-width: 60px;
+        padding: 8px 12px;
+        font-size: 12px;
+    }
+    
+    .bookTypeChip {
+        padding: 6px 12px;
+        font-size: 11px;
+    }
+    
+    .lessonChip {
+        min-width: 80px;
+        padding: 6px 10px;
+        font-size: 11px;
+    }
+}

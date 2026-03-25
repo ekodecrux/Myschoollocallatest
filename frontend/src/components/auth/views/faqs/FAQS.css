@@ -1,0 +1,43 @@
+.faqsCardAccordionContainer {
+
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.accordionImageTextContainer {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: flex-star;
+    padding-left: 20px;
+}
+
+.cardMapFunctionContainer {
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+    padding-bottom: 30px;
+}
+
+.faqsCardWrapper {
+    background: #FFFFFF 0% 0% no-repeat padding-box !important;
+    box-shadow: 0px 3px 6px #00000008 !important;
+    border: 1px solid #DFE3E8 !important;
+    border-radius: 16px !important;
+    opacity: 1 !important;
+}
+
+.accordionContainer {
+    flex: 0.9;
+    margin-top: 90px;
+}
+
+@media screen and (min-width: 320px) and (max-width: 520px) {
+    .accordionContainer {
+        flex: 1;
+        margin-top: 20px;
+        padding-top: 120px;
+    }    
+}

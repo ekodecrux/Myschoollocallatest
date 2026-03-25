@@ -1,0 +1,9 @@
+export { default as SchoolsTab } from './SchoolsTab';
+export { default as TeachersTab } from './TeachersTab';
+export { default as StudentsTab } from './StudentsTab';
+export { default as UserManagementTab } from './UserManagementTab';
+export { default as ImageApprovalsTab } from './ImageApprovalsTab';
+export { default as CreditRequestsTab } from './CreditRequestsTab';
+export { default as AnalyticsTab } from './AnalyticsTab';
+export { default as UserLogsTab } from './UserLogsTab';
+export { default as SalesPlansTab } from './SalesPlansTab';

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="226" height="292" viewBox="0 0 226 292">
+  <defs>
+    <filter id="Rectangle_4406" x="0" y="0" width="226" height="292" filterUnits="userSpaceOnUse">
+      <feOffset input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feFlood flood-opacity="0.039"/>
+      <feComposite operator="in" in2="blur"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#c9dbff"/>
+      <stop offset="1" stop-color="#7da8ff"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_10798" data-name="Group 10798" transform="translate(-1032 -164)">
+    <g transform="matrix(1, 0, 0, 1, 1032, 164)" filter="url(#Rectangle_4406)">
+      <rect id="Rectangle_4406-2" data-name="Rectangle 4406" width="154" height="220" rx="8" transform="translate(36 36)" fill="#e4ebfa"/>
+    </g>
+    <path id="Icon_metro-images" data-name="Icon metro-images" d="M142.17,30.1a18.1,18.1,0,1,1-18.1-18.1A18.1,18.1,0,0,1,142.17,30.1Zm12.067,102.573H9.429V108.539l42.236-72.4,48.27,60.337H112l42.236-36.2Z" transform="translate(1063 280.611)" fill="url(#linear-gradient)"/>
+  </g>
+</svg>
